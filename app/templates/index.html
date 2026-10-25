@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zun Synthesis Academy | Education â€¢ Research â€¢ Skills</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class', // Standard Tailwind dark mode
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            primary: '#0ea5e9', // Sky blue
+            secondary: '#10b981', // Emerald green
+            dark: {
+              900: '#0f172a',
+              800: '#1e293b',
+              700: '#334155',
+            }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      scroll-behavior: smooth;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #0ea5e9, #10b981);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Floating Background Icons */
+    .floating-icons-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .floating-icon {
+      position: absolute;
+      animation: floatIcon 15s linear infinite;
+    }
+
+    @keyframes floatIcon {
+      0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.8);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-20vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Nav Transition */
+    nav {
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .course-rich-content > :first-child { margin-top: 0; }
+    .course-rich-content > :last-child { margin-bottom: 0; }
+    .course-rich-content h1, .course-rich-content h2, .course-rich-content h3, .course-rich-content h4 { margin: 1rem 0 .5rem; font-weight: 700; color: inherit; }
+    .course-rich-content p, .course-rich-content ul, .course-rich-content ol, .course-rich-content blockquote { margin: .75rem 0; }
+    .course-rich-content ul, .course-rich-content ol { padding-left: 1.5rem; }
+    .course-rich-content ul { list-style: disc; }
+    .course-rich-content ol { list-style: decimal; }
+    .course-rich-content a { color: #0284c7; text-decoration: underline; }
+    .course-rich-content img { display: block; max-width: 100%; height: auto; margin: 1rem 0; border-radius: 1rem; }
+    .course-rich-content iframe { display: block; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; height: auto; margin: 1rem 0; border: 0; border-radius: 1rem; }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans transition-colors duration-300 dark:bg-dark-900 dark:text-slate-300">
+
+  <!-- Navigation -->
+  <nav id="navbar"
+    class="fixed w-full z-50 transition-all duration-300 py-4 px-6 md:px-12 bg-white/80 dark:bg-dark-900/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <!-- Logo area -->
+      <div class="flex items-center gap-3">
+        <div class="flex items-center justify-center bg-transparent border-none shadow-none">
+          <img src="ZSA.jpg" alt="ZSA Logo" class="w-auto h-12 object-contain">
+        </div>
+        <div class="hidden md:block">
+          <h1 class="font-heading font-bold text-xl text-slate-800 dark:text-white">ZUN SYNTHESIS</h1>
+          <p class="text-xs text-primary font-medium tracking-widest">ACADEMY</p>
+        </div>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-8 font-medium">
+        <a href="#home" class="hover:text-primary transition-colors">Home</a>
+        <a href="#services" class="hover:text-primary transition-colors">Programs</a>
+        <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+        <a href="#about" class="hover:text-primary transition-colors">About Us</a>
+
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 transition-colors">
+          <i class="fas fa-sun text-xl text-amber-500" id="themeIcon"></i>
+        </button>
+
+        <!-- Learner Account Actions -->
+        <button id="joinNavButton" onclick="toggleJoinModal()"
+          class="px-6 py-2.5 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all hover:-translate-y-0.5">
+          Join Now
+        </button>
+        <button id="studentDashboardNav" type="button" onclick="openStudentDashboard()"
+          class="hidden items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-full font-semibold hover:border-primary transition-colors">
+          <span id="studentAvatar" class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center text-xs font-bold">ZS</span>
+          <span>My Dashboard</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Join Modal (Professional Registration) -->
+  <div id="joinModal"
+    class="fixed inset-0 z-[130] hidden items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity">
+    <div
+      class="bg-white dark:bg-slate-800 w-full max-w-md rounded-2xl p-8 shadow-2xl relative mx-4 animate-[float_0.3s_ease-out]">
+      <!-- Close Button -->
+      <button onclick="toggleJoinModal()"
+        class="absolute top-4 right-4 text-slate-400 hover:text-red-500 transition-colors">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-2">Create an Account</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm">Join Zun Synthesis Academy today to start learning.</p>
+      </div>
+
+      <!-- OAuth Buttons -->
+      <button
+        class="w-full flex items-center justify-center gap-3 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-white py-2.5 rounded-lg font-medium hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors mb-3">
+        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" class="w-5 h-5" alt="Google"> Continue with
+        Google
+      </button>
+      <button
+        class="w-full flex items-center justify-center gap-3 bg-[#24292e] text-white py-2.5 rounded-lg font-medium hover:bg-black transition-colors mb-6">
+        <i class="fab fa-github text-xl"></i> Continue with GitHub
+      </button>
+
+      <!-- Divider -->
+      <div class="relative flex items-center mb-6">
+        <div class="flex-grow border-t border-slate-200 dark:border-slate-600"></div>
+        <span class="flex-shrink-0 mx-4 text-slate-400 text-sm">Or register with email</span>
+        <div class="flex-grow border-t border-slate-200 dark:border-slate-600"></div>
+      </div>
+
+      <!-- Form -->
+      <form id="studentAuthForm" class="space-y-4">
+        <div id="studentNameField">
+          <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Full Name</label>
+          <input type="text"
+            id="studentFullName" name="full_name" autocomplete="name" minlength="2" required
+            class="w-full bg-slate-50 dark:bg-dark-900/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-2.5 text-slate-800 dark:text-white focus:outline-none focus:border-primary transition-colors"
+            placeholder="John Doe">
+        </div>
+        <div>
+          <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Email Address</label>
+          <input type="email"
+            id="studentEmail" name="email" autocomplete="email" required
+            class="w-full bg-slate-50 dark:bg-dark-900/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-2.5 text-slate-800 dark:text-white focus:outline-none focus:border-primary transition-colors"
+            placeholder="john@example.com">
+        </div>
+        <div>
+          <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Password</label>
+          <input type="password"
+            id="studentPassword" name="password" autocomplete="new-password" required minlength="12"
+            class="w-full bg-slate-50 dark:bg-dark-900/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-2.5 text-slate-800 dark:text-white focus:outline-none focus:border-primary transition-colors"
+            placeholder="********">
+        </div>
+        <p id="studentAuthMessage" class="hidden text-sm text-red-500" role="status"></p>
+        <button id="studentAuthSubmit" type="submit"
+          class="w-full py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-bold hover:shadow-lg transition-all mt-2">Sign Up</button>
+      </form>
+
+      <p class="text-center text-sm text-slate-500 dark:text-slate-400 mt-6">
+        <span id="studentAuthPrompt">Already have an account?</span> <button id="studentAuthModeToggle" type="button" class="text-primary hover:underline">Log in</button>
+      </p>
+    </div>
+  </div>
+
+  <!-- Student Dashboard -->
+  <div id="studentDashboard" class="fixed inset-0 z-[120] hidden overflow-y-auto bg-slate-50 dark:bg-dark-900" role="dialog" aria-modal="true" aria-labelledby="studentDashboardTitle">
+    <div class="min-h-screen">
+      <header class="sticky top-0 z-20 bg-white/90 dark:bg-dark-900/90 backdrop-blur-xl border-b border-slate-200 dark:border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+          <div class="flex items-center gap-3 min-w-0"><span id="dashboardAvatar" class="w-11 h-11 shrink-0 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold">ZS</span><div class="min-w-0"><p class="text-xs text-primary font-bold tracking-widest uppercase">Learner space</p><h2 id="studentDashboardTitle" class="text-xl md:text-2xl font-heading font-bold text-slate-900 dark:text-white truncate">My Dashboard</h2></div></div>
+          <button type="button" onclick="closeStudentDashboard()" aria-label="Close student dashboard" class="w-11 h-11 shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-white hover:text-red-500 transition-colors"><i class="fas fa-times"></i></button>
+        </div>
+      </header>
+      <main class="max-w-7xl mx-auto px-6 py-8 md:py-12">
+        <div class="mb-8"><h3 id="dashboardWelcome" class="text-2xl md:text-3xl font-heading font-bold text-slate-900 dark:text-white">Welcome back</h3><p id="dashboardEmail" class="text-slate-500 dark:text-slate-400 mt-1"></p></div>
+        <div id="dashboardError" class="hidden mb-5 p-4 rounded-xl bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-300" role="alert"></div>
+        <div class="flex gap-2 overflow-x-auto pb-2 mb-8" role="tablist" aria-label="Student dashboard sections">
+          <button type="button" data-dashboard-tab="courses" class="dashboard-tab px-5 py-2.5 rounded-full bg-primary text-white font-semibold whitespace-nowrap">My Courses</button>
+          <button type="button" data-dashboard-tab="payments" class="dashboard-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Payment &amp; Billing</button>
+          <button type="button" data-dashboard-tab="certificates" class="dashboard-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Certificates</button>
+          <button type="button" data-dashboard-tab="aid" class="dashboard-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Financial Aid Status</button>
+          <button type="button" data-dashboard-tab="profile" class="dashboard-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Profile</button>
+        </div>
+        <section id="studentDashboardPanel" class="grid grid-cols-1 lg:grid-cols-2 gap-5" aria-live="polite"></section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Full-Screen Course Details & Enrollment -->
+  <div id="courseModal" class="fixed inset-0 z-[110] hidden overflow-y-auto bg-slate-50 dark:bg-dark-900" role="dialog" aria-modal="true" aria-labelledby="courseModalTitle">
+    <div class="min-h-screen relative">
+      <div class="sticky top-0 z-10 bg-white/90 dark:bg-dark-900/90 backdrop-blur-xl border-b border-slate-200 dark:border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+          <div class="min-w-0"><p class="text-xs text-primary font-bold tracking-widest uppercase">Program details</p><h2 id="courseModalTitle" class="text-xl md:text-2xl font-heading font-bold text-slate-900 dark:text-white truncate">Courses</h2></div>
+          <button type="button" onclick="closeCourseModal()" aria-label="Close course details" class="w-11 h-11 shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-white hover:text-red-500 transition-colors"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+      <main class="max-w-7xl mx-auto px-6 py-8 md:py-12">
+        <p id="courseModalDescription" class="max-w-3xl text-slate-600 dark:text-slate-400 mb-8"></p>
+        <div class="flex gap-2 overflow-x-auto pb-2 mb-8" role="tablist" aria-label="Course status">
+          <button type="button" data-course-tab="upcoming" class="course-tab px-5 py-2.5 rounded-full bg-primary text-white font-semibold whitespace-nowrap">Upcoming Courses</button>
+          <button type="button" data-course-tab="active" class="course-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Current Courses</button>
+          <button type="button" data-course-tab="closed" class="course-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Previous/Closed Courses</button>
+        </div>
+        <div id="courseList" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+        <section id="courseDetailPanel" class="hidden mt-10 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-white/10 rounded-3xl p-6 md:p-10 shadow-xl">
+          <button id="courseBackButton" type="button" class="text-primary font-semibold hover:underline mb-6"><i class="fas fa-arrow-left mr-2"></i>All courses</button>
+          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+            <div><span id="courseDetailStatus" class="inline-flex px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-3"></span><h3 id="courseDetailTitle" class="text-2xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white mb-3"></h3><div id="courseDetailDescription" class="max-w-3xl text-slate-600 dark:text-slate-400 course-rich-content"></div></div>
+            <div class="shrink-0 bg-slate-100 dark:bg-dark-900/70 rounded-2xl p-5 min-w-48"><p class="text-xs text-slate-500 uppercase tracking-widest mb-1">Course fee</p><p id="courseDetailPrice" class="text-2xl font-bold text-slate-900 dark:text-white"></p><p id="courseDetailOffer" class="hidden text-xs text-slate-500 line-through mt-1"></p><span id="courseDetailOfferBadge" class="hidden mt-2 px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-500/10 text-rose-700 dark:text-rose-300 text-xs font-bold"></span><p id="courseDetailPaymentHint" class="text-xs text-slate-500 dark:text-slate-400 mt-1"></p></div>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-dark-900/50"><h4 class="font-bold text-slate-800 dark:text-white mb-2"><i class="fas fa-chalkboard-teacher text-primary mr-2"></i>Instructor</h4><p id="courseDetailInstructor" class="text-sm text-slate-600 dark:text-slate-400"></p></div>
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-dark-900/50"><h4 class="font-bold text-slate-800 dark:text-white mb-2"><i class="fas fa-calendar-days text-primary mr-2"></i>Schedule</h4><p id="courseDetailSchedule" class="text-sm text-slate-600 dark:text-slate-400"></p></div>
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-dark-900/50"><h4 class="font-bold text-slate-800 dark:text-white mb-2"><i class="fas fa-list-check text-primary mr-2"></i>Syllabus</h4><ul id="courseDetailSyllabus" class="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-400"></ul></div>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button id="courseEnrollButton" type="button" class="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-bold hover:shadow-lg hover:shadow-primary/30 transition-all">Enroll Now</button>
+            <button id="courseAidToggle" type="button" class="px-6 py-3 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-white rounded-full font-semibold hover:border-primary transition-colors">Apply for Financial Aid</button>
+          </div>
+          <p id="courseActionMessage" class="hidden mt-4 text-sm font-medium" role="status"></p>
+          <div id="mockPaymentPanel" class="hidden mt-6 max-w-2xl p-6 rounded-2xl border border-amber-300 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10">
+            <h4 class="font-bold text-slate-900 dark:text-white mb-2"><i class="fas fa-shield-halved text-amber-500 mr-2"></i>Mock checkout</h4>
+            <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">This demonstration checkout does not process payments or collect card details.</p>
+            <p id="mockPaymentSummary" class="text-sm font-semibold text-slate-800 dark:text-white mb-4"></p>
+            <button id="mockPaymentConfirm" type="button" class="px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-dark-900 rounded-full font-semibold">Complete mock enrollment</button>
+          </div>
+          <form id="financialAidForm" class="hidden mt-6 max-w-2xl space-y-4 p-6 rounded-2xl bg-slate-50 dark:bg-dark-900/50 border border-slate-200 dark:border-white/10">
+            <h4 class="font-bold text-slate-900 dark:text-white">Financial Aid / Fee Waiver Application</h4>
+            <div><label for="aidAmount" class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Requested discount amount</label><input id="aidAmount" type="number" min="0" step="0.01" required class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-800 dark:text-white" placeholder="0.00"></div>
+            <div><label for="aidReason" class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Why are you applying?</label><textarea id="aidReason" required minlength="20" maxlength="5000" rows="4" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-800 dark:text-white" placeholder="Share the circumstances that would help us review your application."></textarea></div>
+            <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-bold">Submit application</button>
+          </form>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Privacy & Security Policy Modal -->
+  <div id="privacyModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <div class="bg-white dark:bg-slate-800 w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl p-8 shadow-2xl relative mx-4">
+      <button onclick="togglePrivacyModal()" aria-label="Close privacy policy" class="absolute top-4 right-4 text-slate-400 hover:text-red-500 transition-colors"><i class="fas fa-times text-xl"></i></button>
+      <h3 id="privacyTitle" class="text-2xl font-bold text-slate-800 dark:text-white mb-2">Privacy &amp; Security Policy</h3>
+      <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Zun Synthesis Academy is committed to protecting the privacy and security of our learners.</p>
+      <div class="space-y-5 text-sm text-slate-600 dark:text-slate-300">
+        <section><h4 class="font-bold text-slate-800 dark:text-white mb-1">Data Collection</h4><p>We may collect information you provide, such as your name, email address, learning interests, and messages, to respond to enquiries, manage registrations, and deliver educational services. We collect only information relevant to these purposes.</p></section>
+        <section><h4 class="font-bold text-slate-800 dark:text-white mb-1">Data Security</h4><p>We use reasonable administrative and technical safeguards to protect information against unauthorized access, loss, or misuse. No online transmission or storage method can be guaranteed completely secure.</p></section>
+        <section><h4 class="font-bold text-slate-800 dark:text-white mb-1">Cookies</h4><p>This site may use browser storage, including localStorage, to remember your theme preference. Essential cookies or similar technologies may support site functionality. You can manage or clear these through your browser settings.</p></section>
+        <section><h4 class="font-bold text-slate-800 dark:text-white mb-1">Third-Party Integrations</h4><p>We use third-party services for fonts, icons, and potential sign-in or embedded features. Those providers may process data under their own privacy policies. We do not sell your personal information.</p></section>
+        <section><h4 class="font-bold text-slate-800 dark:text-white mb-1">Anonymous Visit Analytics</h4><p>We record the page path and server-side visit time to understand aggregate traffic. We do not collect IP addresses, cookies, browser fingerprints, or account identifiers for this feature.</p></section>
+        <section><h4 class="font-bold text-slate-800 dark:text-white mb-1">Your Rights</h4><p>You may request access to, correction of, or deletion of personal information you have shared with us, subject to applicable requirements. Contact us using the details on this page to make a request or ask a privacy question.</p></section>
+      </div>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mt-6">This policy may be updated as our services evolve.</p>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <!-- Floating Animated Background Icons -->
+    <div class="floating-icons-container" id="bgIcons"></div>
+
+    <!-- Glow effects -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] -z-10"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[100px] -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-6 text-center z-10 relative">
+      <div
+        class="inline-block mb-4 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-semibold tracking-wide backdrop-blur-md">
+        EDUCATION &bull; RESEARCH &bull; SKILLS
+      </div>
+
+      <h1 class="text-5xl md:text-7xl font-heading font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+        Bridging <span class="gradient-text">Biology</span> & <br />
+        <span class="gradient-text">Technology</span> for the Future
+      </h1>
+
+      <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10">
+        A premium educational platform integrating traditional biological sciences with modern computational power, data
+        analytics, and global opportunities.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#services"
+          class="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-dark-900 rounded-full font-bold text-lg hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors flex items-center justify-center gap-2 shadow-lg">
+          Explore Programs <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#about"
+          class="px-8 py-4 bg-white/60 dark:bg-slate-800/60 backdrop-blur-md text-slate-800 dark:text-white border border-slate-300 dark:border-slate-600 rounded-full font-bold text-lg hover:bg-white dark:hover:bg-slate-700 transition-colors">
+          Meet the Founder
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Counter -->
+  <section aria-label="Academy statistics" class="py-16 relative z-10 bg-slate-100/70 dark:bg-dark-800/50 border-y border-slate-200 dark:border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <div id="statsGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+        <div class="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-lg"><p id="statRegisteredStudents" class="text-3xl md:text-4xl font-heading font-bold gradient-text">0</p><p class="mt-2 text-sm md:text-base font-medium text-slate-600 dark:text-slate-300">Registered Learners</p></div>
+        <div class="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-lg"><p id="statActiveCourses" class="text-3xl md:text-4xl font-heading font-bold gradient-text">0</p><p class="mt-2 text-sm md:text-base font-medium text-slate-600 dark:text-slate-300">Active Courses</p></div>
+        <div class="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-lg"><p id="statEnrollments" class="text-3xl md:text-4xl font-heading font-bold gradient-text">0</p><p class="mt-2 text-sm md:text-base font-medium text-slate-600 dark:text-slate-300">Course Enrollments</p></div>
+        <div class="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-lg"><p id="statVisits" class="text-3xl md:text-4xl font-heading font-bold gradient-text">0</p><p class="mt-2 text-sm md:text-base font-medium text-slate-600 dark:text-slate-300">Visits (24h)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Updates & News -->
+  <section id="news" class="py-16 relative z-10 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
+        <div>
+          <p class="text-sm text-primary font-bold tracking-widest uppercase mb-2">From the Academy</p>
+          <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white">Latest Updates <span class="gradient-text">&amp; News</span></h2>
+        </div>
+        <p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2"><i class="fas fa-arrows-left-right text-primary"></i> Scroll to explore</p>
+      </div>
+      <div id="newsTicker" class="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4 scroll-smooth" aria-label="Latest academy announcements">
+        <article class="min-w-[280px] sm:min-w-[340px] snap-start bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-indigo-200 dark:border-indigo-400/20 p-6 rounded-2xl shadow-lg">
+          <p class="text-xs font-bold tracking-widest uppercase text-indigo-600 dark:text-indigo-400 mb-3">New Program</p>
+          <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">AI-Powered Research &amp; Vibe Coding</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Explore ethical AI for academic research, data analytics, prompt engineering, and building useful tools.</p>
+        </article>
+        <article class="min-w-[280px] sm:min-w-[340px] snap-start bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-sky-200 dark:border-sky-400/20 p-6 rounded-2xl shadow-lg">
+          <p class="text-xs font-bold tracking-widest uppercase text-sky-600 dark:text-sky-400 mb-3">Learning</p>
+          <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">Build Skills for Modern Research</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Discover practical workshops connecting biological sciences, programming, and data analysis.</p>
+        </article>
+        <article class="min-w-[280px] sm:min-w-[340px] snap-start bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-emerald-200 dark:border-emerald-400/20 p-6 rounded-2xl shadow-lg">
+          <p class="text-xs font-bold tracking-widest uppercase text-emerald-600 dark:text-emerald-400 mb-3">Research</p>
+          <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">Biology Meets Technology</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Follow the academy’s focus on evidence-led research and interdisciplinary learning.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services / Programs Section -->
+  <section id="services" class="py-24 relative z-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-heading font-bold text-slate-900 dark:text-white mb-4">Our Core <span
+            class="gradient-text">Offerings</span></h2>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Master the tools of tomorrow with our
+          specialized workshops and training programs.</p>
+      </div>
+
+      <div id="programGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card 3 -->
+        <div
+          class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-white/10 p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group shadow-lg">
+          <div
+            class="w-14 h-14 bg-purple-100 dark:bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-600 dark:text-purple-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fas fa-microscope"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-3">Biological Sciences</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">Workshops focusing on One Health, epidemiology,
+            nanomedicine, and advanced veterinary sciences.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-white/10 p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group shadow-lg">
+          <div
+            class="w-14 h-14 bg-emerald-100 dark:bg-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fas fa-dna"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-3">Bioinformatics & Data</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">Merge biology with data science. Master GeoPandas,
+            Matplotlib, and computational biology tools.</p>
+        </div>
+
+        <!-- Card 1 -->
+        <div
+          class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-white/10 p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group shadow-lg">
+          <div
+            class="w-14 h-14 bg-blue-100 dark:bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-3">Programming & Tech</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">Learn Python, SQL, and core programming concepts
+            tailored for scientific research and data analysis.</p>
+        </div>
+
+        <!-- AI Research & Vibe Coding -->
+        <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-indigo-300 dark:border-indigo-400/30 p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group shadow-lg">
+          <div class="w-14 h-14 bg-indigo-100 dark:bg-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-3">AI-Powered Research &amp; Vibe Coding</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">Master ethical AI integration for academic research, data analytics, prompt engineering, and Vibe Coding to build tech tools without traditional programming.</p>
+        </div>
+        <!-- Card 4 -->
+        <div
+          class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-white/10 p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group shadow-lg">
+          <div
+            class="w-14 h-14 bg-red-100 dark:bg-red-500/20 rounded-xl flex items-center justify-center text-red-600 dark:text-red-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fas fa-language"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-3">IELTS Preparation</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">Comprehensive guidance and practice sessions to achieve
+            your target band score for studying abroad.</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div
+          class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-white/10 p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group shadow-lg">
+          <div
+            class="w-14 h-14 bg-yellow-100 dark:bg-yellow-500/20 rounded-xl flex items-center justify-center text-yellow-600 dark:text-yellow-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-3">Scholarship Guidance</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">End-to-end support for higher education, application
+            strategies, and finding global research opportunities.</p>
+        </div>
+
+        <!-- Training & Workshops -->
+        <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-cyan-300 dark:border-cyan-400/20 p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group shadow-lg">
+          <div class="w-14 h-14 bg-cyan-100 dark:bg-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-600 dark:text-cyan-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-3">Training &amp; Workshops</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">Join practical workshops that turn research ideas into confident, hands-on skills.</p>
+        </div>
+
+        <!-- Card 6 -->
+        <div
+          class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-primary/30 p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group shadow-lg flex flex-col justify-center items-center text-center">
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-3">Custom Training</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Need specific research methodology or software
+            training?</p>
+          <a href="#contact" class="text-primary font-semibold hover:underline">Contact Us <i
+              class="fas fa-arrow-right text-xs"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Footer Section -->
+  <section id="contact" class="py-24 relative z-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <!-- Contact Info -->
+        <div>
+          <h2 class="text-3xl md:text-5xl font-heading font-bold text-slate-900 dark:text-white mb-6">Let's <span
+              class="gradient-text">Connect</span></h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-8">
+            I am eager to connect with professionals and researchers in the veterinary, nanomedicine, and public health
+            sectors to continue learning and contributing to innovative solutions.
+          </p>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-4 text-slate-700 dark:text-slate-300">
+              <div
+                class="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-primary text-xl shadow-inner">
+                <i class="fab fa-whatsapp"></i>
+              </div>
+              <div>
+                <p class="text-sm text-slate-500">Cell / WhatsApp</p>
+                <a href="tel:+8801849288024" class="font-semibold hover:text-primary transition-colors">+880
+                  1849-288024</a>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 text-slate-700 dark:text-slate-300">
+              <div
+                class="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-primary text-xl shadow-inner">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <p class="text-sm text-slate-500">Email</p>
+                <a href="mailto:mdnafizurrahman8024@gmail.com" class="font-semibold hover:text-primary transition-colors">mdnafizurrahman8024@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="flex flex-wrap gap-3">
+            <a href="https://www.facebook.com/mdnafizurrahman8024" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-white hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-all"><i
+                class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/nafizun_8024" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-white hover:bg-pink-600 hover:text-white dark:hover:bg-pink-600 transition-all"><i
+                class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com/in/md-nafizur-rahman-ru" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-white hover:bg-blue-700 hover:text-white dark:hover:bg-blue-700 transition-all"><i
+                class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/mdnafizurrahman8024" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-white hover:bg-gray-800 hover:text-white dark:hover:bg-gray-700 transition-all"><i
+                class="fab fa-github"></i></a>
+            <a href="https://scholar.google.com/citations?user=bImpEzMAAAAJ&hl=en" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-white hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all"><i
+                class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0009-0008-3918-187X" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-white hover:bg-green-500 hover:text-white dark:hover:bg-green-500 transition-all"><i
+                class="fab fa-orcid"></i></a>
+            <a href="https://www.researchgate.net/profile/Md-Rahman-1097" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-white hover:bg-teal-500 hover:text-white dark:hover:bg-teal-500 transition-all"><i
+                class="fab fa-researchgate"></i></a>
+            <a href="https://osf.io/9aqs3/" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-white hover:bg-indigo-500 hover:text-white dark:hover:bg-indigo-500 transition-all"><i
+                class="fas fa-project-diagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div
+          class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-white/10">
+          <form class="space-y-4">
+            <div>
+              <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Name</label>
+              <input type="text"
+                class="w-full bg-slate-50 dark:bg-dark-900/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-800 dark:text-white focus:outline-none focus:border-primary transition-colors"
+                placeholder="Your name">
+            </div>
+            <div>
+              <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Email</label>
+              <input type="email"
+                class="w-full bg-slate-50 dark:bg-dark-900/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-800 dark:text-white focus:outline-none focus:border-primary transition-colors"
+                placeholder="your@email.com">
+            </div>
+            <div>
+              <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Message</label>
+              <textarea rows="4"
+                class="w-full bg-slate-50 dark:bg-dark-900/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-800 dark:text-white focus:outline-none focus:border-primary transition-colors"
+                placeholder="How can we help you?"></textarea>
+            </div>
+            <button type="button"
+              class="w-full py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-bold hover:shadow-lg transition-all">Send
+              Message</button>
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about"
+    class="py-24 bg-slate-100/50 dark:bg-dark-800/50 relative z-10 border-y border-slate-200 dark:border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row gap-16 items-center">
+        <!-- Image side -->
+        <div class="w-full lg:w-1/3 relative">
+          <div
+            class="aspect-[4/5] rounded-2xl overflow-hidden relative z-10 border-4 border-white dark:border-dark-700 shadow-2xl">
+            <img src="zun.png" alt="Md. Nafizur Rahman" class="w-full h-full object-cover"
+              onerror="this.src='https://via.placeholder.com/400x500?text=Md.+Nafizur+Rahman'">
+          </div>
+          <!-- Decorative elements -->
+          <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/80 rounded-full blur-[40px] -z-10"></div>
+          <div class="absolute -top-6 -left-6 w-32 h-32 bg-secondary/80 rounded-full blur-[40px] -z-10"></div>
+        </div>
+
+        <!-- Text side -->
+        <div class="w-full lg:w-2/3">
+          <h2 class="text-sm text-primary font-bold tracking-widest mb-2 uppercase">About The Founder</h2>
+          <h3 class="text-3xl md:text-5xl font-heading font-bold text-slate-900 dark:text-white mb-6">Md. Nafizur Rahman
+          </h3>
+
+          <div
+            class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 space-y-4 text-sm md:text-base">
+            <p>
+              Hello! I am a dedicated <strong>Doctor of Veterinary Medicine (DVM) student</strong> at the Department of
+              Veterinary and Animal Sciences, University of Rajshahi, Bangladesh. My academic journey is built upon a
+              strong foundation in Anatomy, Histology, Physiology, Pathology, Parasitology, Microbiology, Medicine,
+              Surgery, Epidemiology, and Public Health.
+            </p>
+            <p>
+              I am deeply passionate about bridging the gap between biological research and advanced computational
+              science to improve animal welfare, public health, and disease prevention. Throughout my journey, I have
+              integrated traditional veterinary science with modern <strong>Data Analytics</strong>, developing
+              proficiency in <strong>Python, SQL, GeoPandas, and Matplotlib</strong> to drive evidence-based research.
+            </p>
+          </div>
+
+          <!-- Research Focus Accordions / Cards -->
+          <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white/80 dark:bg-slate-800/80 shadow-md p-4 rounded-xl border-l-4 border-primary">
+              <h4 class="text-slate-800 dark:text-white font-semibold mb-1 text-sm flex items-center gap-2"><i
+                  class="fas fa-stethoscope text-primary"></i> Clinical Surveillance</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400">Working on a 'One Health' project evaluating
+                veterinary prescribing patterns, owner KAP, and self-medication in companion animals.</p>
+            </div>
+            <div class="bg-white/80 dark:bg-slate-800/80 shadow-md p-4 rounded-xl border-l-4 border-secondary">
+              <h4 class="text-slate-800 dark:text-white font-semibold mb-1 text-sm flex items-center gap-2"><i
+                  class="fas fa-atom text-secondary"></i> Nanomedicine</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400">Evaluating nanoparticle-based Rabies vaccines and
+                nanoparticle remedies for heavy metal bioaccumulation in livestock.</p>
+            </div>
+            <div class="bg-white/80 dark:bg-slate-800/80 shadow-md p-4 rounded-xl border-l-4 border-purple-500">
+              <h4 class="text-slate-800 dark:text-white font-semibold mb-1 text-sm flex items-center gap-2"><i
+                  class="fas fa-bug text-purple-500"></i> Epidemiology</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400">Extensive studies on ectoparasites in dogs,
+                Capillaria spp. in poultry, and bedbug risk factors in student residences.</p>
+            </div>
+            <div class="bg-white/80 dark:bg-slate-800/80 shadow-md p-4 rounded-xl border-l-4 border-yellow-500">
+              <h4 class="text-slate-800 dark:text-white font-semibold mb-1 text-sm flex items-center gap-2"><i
+                  class="fas fa-hand-holding-heart text-yellow-500"></i> Wildlife Rescue</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400">Active animal welfare advocate, participating in
+                snake rescue with SWAN and providing free clinical services for stray animals.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="siteFooter" class="relative z-10 py-8 bg-white dark:bg-dark-900 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mt-20 pt-8 border-t border-slate-200 dark:border-slate-800 text-slate-500 text-sm">
+        <p>&copy; 2026 Zun Synthesis Academy. All rights reserved.</p>
+        <p class="mt-1">Developed for Md. Nafizur Rahman</p>
+        <button type="button" onclick="togglePrivacyModal()" class="mt-3 text-primary hover:underline">Privacy &amp; Security Policy</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts for Interactivity -->
+  <script>
+    // Modal Logic
+    function toggleJoinModal() {
+      const modal = document.getElementById('joinModal');
+      if (modal.classList.contains('hidden')) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function togglePrivacyModal() {
+      const modal = document.getElementById('privacyModal');
+      const isOpening = modal.classList.contains('hidden');
+      modal.classList.toggle('hidden', !isOpening);
+      modal.classList.toggle('flex', isOpening);
+    }
+
+    // Three-state theme preference: light (default), dark, system.
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const html = document.documentElement;
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const themeStates = ['light', 'dark', 'system'];
+    let themePreference = localStorage.getItem('zsa-theme');
+    if (!themeStates.includes(themePreference)) themePreference = 'light';
+
+    function applyTheme() {
+      const dark = themePreference === 'dark' || (themePreference === 'system' && systemTheme.matches);
+      html.classList.toggle('dark', dark);
+      const iconClasses = {
+        light: 'fas fa-sun text-xl text-amber-500',
+        dark: 'fas fa-moon text-xl text-slate-600 dark:text-amber-500',
+        system: 'fas fa-desktop text-xl text-slate-600 dark:text-slate-300'
+      };
+      themeIcon.className = iconClasses[themePreference];
+      themeToggle.setAttribute('aria-label', `Theme: ${themePreference}. Click to change theme.`);
+      themeToggle.title = `Theme: ${themePreference}`;
+      updateIconColors();
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themePreference = themeStates[(themeStates.indexOf(themePreference) + 1) % themeStates.length];
+      localStorage.setItem('zsa-theme', themePreference);
+      applyTheme();
+    });
+    systemTheme.addEventListener('change', () => {
+      if (themePreference === 'system') applyTheme();
+    });
+
+    // Generate Floating Background Icons
+    const icons = [
+      'fa-dna', 'fa-code', 'fa-microscope', 'fa-laptop-code',
+      'fa-graduation-cap', 'fa-book', 'fa-atom', 'fa-database',
+      'fa-network-wired', 'fa-chart-line'
+    ];
+
+    const container = document.getElementById('bgIcons');
+    const numIcons = 20;
+
+    function updateIconColors() {
+      const allIcons = document.querySelectorAll('.floating-icon');
+      allIcons.forEach(icon => {
+        const dark = themePreference === 'dark' || (themePreference === 'system' && systemTheme.matches);
+        icon.style.color = dark ? 'rgba(14, 165, 233, 0.08)' : 'rgba(14, 165, 233, 0.15)';
+      });
+    }
+
+    for (let i = 0; i < numIcons; i++) {
+      const iconElement = document.createElement('i');
+      const randomIconClass = icons[Math.floor(Math.random() * icons.length)];
+      iconElement.className = `fas ${randomIconClass} floating-icon text-slate-300 dark:text-slate-800`;
+
+      const leftPos = Math.random() * 100;
+      const animDelay = Math.random() * 15;
+      const animDuration = 10 + Math.random() * 10;
+      const fontSize = 1 + Math.random() * 2;
+
+      iconElement.style.left = `${leftPos}%`;
+      iconElement.style.animationDelay = `${animDelay}s`;
+      iconElement.style.animationDuration = `${animDuration}s`;
+      iconElement.style.fontSize = `${fontSize}rem`;
+
+      container.appendChild(iconElement);
+    }
+    applyTheme(); // Restore saved preference and initialize theme visuals.
+
+    // The page remains usable as a static site if the API is unavailable.
+    // When the API is online, database content replaces the matching sections.
+    const accentStyles = {
+      blue: ['border-slate-200 dark:border-white/10', 'bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400'],
+      emerald: ['border-slate-200 dark:border-white/10', 'bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400'],
+      purple: ['border-slate-200 dark:border-white/10', 'bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400'],
+      red: ['border-slate-200 dark:border-white/10', 'bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400'],
+      yellow: ['border-slate-200 dark:border-white/10', 'bg-yellow-100 dark:bg-yellow-500/20 text-yellow-600 dark:text-yellow-400'],
+      indigo: ['border-indigo-300 dark:border-indigo-400/30', 'bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400'],
+      cyan: ['border-cyan-300 dark:border-cyan-400/20', 'bg-cyan-100 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400'],
+      primary: ['border-primary/30', 'bg-primary/10 text-primary']
+    };
+
+    function safeExternalUrl(value) {
+      if (typeof value !== 'string' || !value.trim()) return null;
+      try {
+        const url = new URL(value, window.location.origin);
+        return ['http:', 'https:'].includes(url.protocol) ? url.href : null;
+      } catch (_) { return null; }
+    }
+
+    function appendContentLinks(parent, payload) {
+      const links = Array.isArray(payload.external_links) ? payload.external_links : [];
+      if (payload.video_url) links.unshift({ label: 'Watch video', url: payload.video_url });
+      links.forEach(link => {
+        const href = safeExternalUrl(link.url);
+        if (!href) return;
+        const anchor = document.createElement('a');
+        anchor.href = href;
+        anchor.target = '_blank';
+        anchor.rel = 'noopener noreferrer';
+        anchor.textContent = link.label || 'Learn more';
+        anchor.className = 'text-primary font-semibold hover:underline';
+        parent.appendChild(anchor);
+      });
+    }
+
+    function renderProgram(item) {
+      const data = item.payload || {};
+      const palette = accentStyles[data.accent] || accentStyles.blue;
+      const featured = item.slug === 'custom-training';
+      const card = document.createElement('article');
+      card.className = `bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border ${palette[0]} p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group shadow-lg cursor-pointer${featured ? ' flex flex-col justify-center items-center text-center' : ''}`;
+      card.dataset.programSlug = item.slug;
+      card.dataset.programTitle = data.title || item.slug;
+      card.dataset.programDescription = data.description || '';
+      card.setAttribute('role', 'button');
+      card.tabIndex = 0;
+
+      if (data.image_url && !featured) {
+        const imageUrl = safeExternalUrl(data.image_url);
+        if (imageUrl) {
+          const image = document.createElement('img');
+          image.src = imageUrl;
+          image.alt = data.image_alt || data.title || '';
+          image.loading = 'lazy';
+          image.className = 'w-full h-40 object-cover rounded-xl mb-6';
+          card.appendChild(image);
+        }
+      }
+      if (!featured) {
+        const iconWrap = document.createElement('div');
+        iconWrap.className = `w-14 h-14 ${palette[1]} rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform`;
+        const icon = document.createElement('i');
+        const allowedIcons = ['fa-code', 'fa-dna', 'fa-microscope', 'fa-language', 'fa-graduation-cap', 'fa-brain', 'fa-robot', 'fa-laptop-code', 'fa-book', 'fa-atom', 'fa-chalkboard-teacher'];
+        icon.className = `fas ${allowedIcons.includes(data.icon) ? data.icon : 'fa-book'}`;
+        iconWrap.appendChild(icon);
+        card.appendChild(iconWrap);
+      }
+      const heading = document.createElement('h3');
+      heading.className = 'text-xl font-bold text-slate-800 dark:text-white mb-3';
+      heading.textContent = data.title || item.slug;
+      card.appendChild(heading);
+      const description = document.createElement('p');
+      description.className = `text-slate-600 dark:text-slate-400 text-sm${featured ? ' mb-4' : ''}`;
+      description.textContent = data.description || '';
+      card.appendChild(description);
+      if (featured) {
+        const contact = document.createElement('a');
+        contact.href = safeExternalUrl(data.cta_url) || '#contact';
+        contact.className = 'text-primary font-semibold hover:underline mt-4';
+        contact.textContent = data.cta_text || 'Contact Us →';
+        card.appendChild(contact);
+      }
+      appendContentLinks(card, data);
+      return card;
+    }
+
+    async function loadDynamicContent() {
+      try {
+        const programResponse = await fetch('/api/content?kind=program');
+        if (programResponse.ok) {
+          const programs = await programResponse.json();
+          if (Array.isArray(programs)) {
+            const programOrder = ['biological-sciences', 'bioinformatics-data', 'programming-tech', 'ai-research-vibe-coding', 'ielts-preparation', 'scholarship-guidance', 'training-workshops', 'custom-training'];
+            programs.sort((a, b) => {
+              const aOrder = programOrder.indexOf(a.slug);
+              const bOrder = programOrder.indexOf(b.slug);
+              return (aOrder < 0 ? programOrder.length : aOrder) - (bOrder < 0 ? programOrder.length : bOrder);
+            });
+            document.getElementById('programGrid').replaceChildren(...programs.map(renderProgram));
+          }
+        }
+      } catch (_) {
+        // Keep the hand-authored markup as the offline fallback.
+      }
+    }
+
+    loadDynamicContent();
+
+    async function loadNewsUpdates() {
+      try {
+        const response = await fetch('/api/content?kind=news');
+        if (!response.ok) return;
+        const updates = await response.json();
+        if (!Array.isArray(updates) || !updates.length) return;
+        const ticker = document.getElementById('newsTicker');
+        ticker.replaceChildren(...updates.map(update => {
+          const data = update.payload || {};
+          const card = document.createElement('article');
+          card.className = 'min-w-[280px] sm:min-w-[340px] snap-start bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-primary/20 p-6 rounded-2xl shadow-lg';
+          const category = document.createElement('p');
+          category.className = 'text-xs font-bold tracking-widest uppercase text-primary mb-3';
+          category.textContent = data.category || 'Update';
+          const heading = document.createElement('h3');
+          heading.className = 'text-lg font-bold text-slate-800 dark:text-white mb-2';
+          heading.textContent = data.title || update.slug;
+          const description = document.createElement('p');
+          description.className = 'text-sm text-slate-600 dark:text-slate-400';
+          description.textContent = data.description || '';
+          card.append(category, heading, description);
+          if (typeof data.link_url === 'string' && safeExternalUrl(data.link_url)) {
+            const link = document.createElement('a');
+            link.href = safeExternalUrl(data.link_url);
+            link.className = 'inline-block mt-4 text-primary font-semibold hover:underline';
+            link.textContent = data.link_text || 'Learn more';
+            link.rel = 'noopener noreferrer';
+            link.target = '_blank';
+            card.appendChild(link);
+          }
+          return card;
+        }));
+      } catch (_) {
+        // Keep the announcement cards in the HTML as the offline fallback.
+      }
+    }
+
+    loadNewsUpdates();
+
+    async function refreshLiveStats() {
+      try {
+        const response = await fetch('/api/stats');
+        if (!response.ok) return;
+        const stats = await response.json();
+        document.getElementById('statRegisteredStudents').textContent = stats.registered_students ?? 0;
+        document.getElementById('statActiveCourses').textContent = stats.active_courses ?? 0;
+        document.getElementById('statEnrollments').textContent = stats.course_enrollments ?? 0;
+        document.getElementById('statVisits').textContent = stats.visits_last_24_hours ?? 0;
+      } catch (_) {
+        // The counters retain their zero values until the API is available.
+      }
+    }
+    refreshLiveStats();
+    window.setInterval(refreshLiveStats, 30000);
+
+    let currentProgram = { slug: '', title: '', description: '' };
+    let programCourses = [];
+    let selectedCourse = null;
+    let selectedCourseTab = 'upcoming';
+    let pendingPaymentId = null;
+
+    function showCourseMessage(message, isError = false) {
+      const element = document.getElementById('courseActionMessage');
+      element.textContent = message;
+      element.className = `mt-4 text-sm font-medium ${isError ? 'text-red-500' : 'text-emerald-600 dark:text-emerald-400'}`;
+    }
+
+    function courseModalVisibility(show) {
+      const modal = document.getElementById('courseModal');
+      modal.classList.toggle('hidden', !show);
+      document.body.classList.toggle('overflow-hidden', show);
+    }
+
+    async function openProgramCourses(slug, title, description = '') {
+      currentProgram = { slug, title, description };
+      programCourses = [];
+      selectedCourse = null;
+      selectedCourseTab = 'upcoming';
+      document.getElementById('courseModalTitle').textContent = title;
+      document.getElementById('courseModalDescription').textContent = description;
+      document.getElementById('courseDetailPanel').classList.add('hidden');
+      document.getElementById('courseList').classList.remove('hidden');
+      document.getElementById('courseActionMessage').classList.add('hidden');
+      document.getElementById('courseList').innerHTML = '<p class="text-slate-500 dark:text-slate-400">Loading available courses…</p>';
+      courseModalVisibility(true);
+      try {
+        const response = await fetch(`/api/courses?program_slug=${encodeURIComponent(slug)}`);
+        if (!response.ok) throw new Error('Course listings could not be loaded.');
+        programCourses = await response.json();
+      } catch (_) {
+        programCourses = [];
+      }
+      renderCourseList();
+    }
+
+    function renderCourseList() {
+      const list = document.getElementById('courseList');
+      const courses = programCourses.filter(course => course.status === selectedCourseTab);
+      document.querySelectorAll('[data-course-tab]').forEach(button => {
+        const active = button.dataset.courseTab === selectedCourseTab;
+        button.className = `course-tab px-5 py-2.5 rounded-full font-semibold whitespace-nowrap ${active ? 'bg-primary text-white' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10'}`;
+        button.setAttribute('aria-selected', String(active));
+      });
+      document.getElementById('courseDetailPanel').classList.add('hidden');
+      document.getElementById('courseList').classList.remove('hidden');
+      list.replaceChildren();
+      if (!courses.length) {
+        const empty = document.createElement('div');
+        empty.className = 'col-span-full bg-white/70 dark:bg-slate-800/60 border border-slate-200 dark:border-white/10 rounded-2xl p-8 text-center text-slate-500 dark:text-slate-400';
+        empty.textContent = 'There are no courses in this category right now.';
+        list.appendChild(empty);
+        return;
+      }
+      courses.forEach(course => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'text-left bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-white/10 p-6 rounded-2xl shadow-lg hover:-translate-y-1 hover:border-primary/40 transition-all';
+        const status = document.createElement('span');
+        status.className = 'inline-flex px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4';
+        status.textContent = course.status;
+        const offerBadge = document.createElement('span');
+        if (course.has_offer) {
+          offerBadge.className = 'inline-flex px-3 py-1 rounded-full bg-rose-100 dark:bg-rose-500/10 text-rose-700 dark:text-rose-300 text-xs font-bold mb-4 ml-2';
+          offerBadge.textContent = course.discount_badge_text || 'Special offer';
+        }
+        const heading = document.createElement('h3');
+        heading.className = 'text-xl font-bold text-slate-800 dark:text-white mb-2';
+        heading.textContent = course.title;
+        const description = document.createElement('div');
+        description.className = 'text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mb-5';
+        const descriptionPreview = document.createElement('div');
+        descriptionPreview.innerHTML = course.description || '';
+        description.textContent = descriptionPreview.textContent.trim() || 'Open the course to see the full details.';
+        const fee = document.createElement('p');
+        fee.className = 'font-semibold text-primary';
+        fee.textContent = course.price_cents > 0 ? `${course.currency} ${(course.price_cents / 100).toFixed(2)}` : 'Free';
+        if (course.has_offer) {
+          const regular = document.createElement('del'); regular.className = 'ml-2 text-sm text-slate-400 font-normal';
+          regular.textContent = `${course.currency} ${(course.regular_price_cents / 100).toFixed(2)}`; fee.appendChild(regular);
+        }
+        button.append(status);
+        if (course.has_offer) button.appendChild(offerBadge);
+        button.append(heading, description, fee);
+        button.addEventListener('click', () => showCourseDetails(course));
+        list.appendChild(button);
+      });
+    }
+
+    function showCourseDetails(course) {
+      selectedCourse = course;
+      pendingPaymentId = null;
+      document.getElementById('courseList').classList.add('hidden');
+      const panel = document.getElementById('courseDetailPanel');
+      panel.classList.remove('hidden');
+      document.getElementById('courseDetailStatus').textContent = course.status;
+      document.getElementById('courseDetailTitle').textContent = course.title;
+      document.getElementById('courseDetailDescription').innerHTML = course.description || '';
+      document.getElementById('courseDetailInstructor').textContent = course.instructor || 'Instructor details will be announced.';
+      document.getElementById('courseDetailSchedule').textContent = course.schedule || 'Schedule will be announced.';
+      document.getElementById('courseDetailPrice').textContent = course.price_cents > 0 ? `${course.currency} ${(course.price_cents / 100).toFixed(2)}` : 'Free';
+      const offerLine = document.getElementById('courseDetailOffer');
+      const offerBadge = document.getElementById('courseDetailOfferBadge');
+      offerLine.classList.toggle('hidden', !course.has_offer);
+      offerBadge.classList.toggle('hidden', !course.has_offer);
+      offerLine.textContent = course.has_offer ? `Regular price: ${course.currency} ${(course.regular_price_cents / 100).toFixed(2)}` : '';
+      offerBadge.textContent = course.has_offer ? (course.discount_badge_text || 'Special offer') : '';
+      document.getElementById('courseDetailPaymentHint').textContent = course.price_cents > 0 ? 'Mock checkout only' : 'Direct enrollment';
+      const syllabus = document.getElementById('courseDetailSyllabus');
+      syllabus.replaceChildren();
+      (Array.isArray(course.syllabus) && course.syllabus.length ? course.syllabus : ['Syllabus details will be announced.']).forEach(topic => {
+        const entry = document.createElement('li');
+        entry.textContent = topic;
+        syllabus.appendChild(entry);
+      });
+      document.getElementById('courseEnrollButton').disabled = false;
+      document.getElementById('courseEnrollButton').classList.toggle('hidden', course.status === 'closed');
+      document.getElementById('courseAidToggle').classList.toggle('hidden', course.status === 'closed' || course.price_cents <= 0);
+      document.getElementById('mockPaymentPanel').classList.add('hidden');
+      document.getElementById('financialAidForm').classList.add('hidden');
+      document.getElementById('courseActionMessage').classList.add('hidden');
+    }
+
+    async function submitEnrollment(mockPaymentConfirmed = false) {
+      if (!selectedCourse) return;
+      const token = sessionStorage.getItem('zsa-student-token');
+      if (!token) {
+        showCourseMessage('Create a learner account or log in to enroll.', true);
+        toggleJoinModal();
+        return;
+      }
+      try {
+        const response = await fetch(`/api/courses/${selectedCourse.id}/enroll`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+          body: JSON.stringify({ mock_payment_confirmed: mockPaymentConfirmed })
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.detail || 'Enrollment could not be completed.');
+        document.getElementById('mockPaymentPanel').classList.add('hidden');
+        document.getElementById('courseEnrollButton').disabled = true;
+        showCourseMessage('Enrollment confirmed. Welcome to the course!');
+        refreshLiveStats();
+      } catch (error) {
+        showCourseMessage(error.message, true);
+      }
+    }
+
+    async function beginMockCheckout() {
+      if (!selectedCourse) return;
+      const token = sessionStorage.getItem('zsa-student-token');
+      try {
+        const response = await fetch(`/api/courses/${selectedCourse.id}/checkout`, {
+          method: 'POST', headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.detail || 'Checkout could not be started.');
+        pendingPaymentId = result.payment_id;
+        document.getElementById('mockPaymentSummary').textContent = `Invoice ${result.invoice_number} · ${result.currency} ${(result.amount_cents / 100).toFixed(2)} · Pending`;
+        document.getElementById('mockPaymentPanel').classList.remove('hidden');
+      } catch (error) {
+        showCourseMessage(error.message, true);
+      }
+    }
+
+    async function confirmMockCheckout() {
+      if (!pendingPaymentId) return;
+      const token = sessionStorage.getItem('zsa-student-token');
+      try {
+        const response = await fetch(`/api/payments/${pendingPaymentId}/mock-confirm`, {
+          method: 'POST', headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.detail || 'Mock payment could not be confirmed.');
+        document.getElementById('mockPaymentPanel').classList.add('hidden');
+        document.getElementById('courseEnrollButton').disabled = true;
+        showCourseMessage('Mock payment recorded and enrollment confirmed.');
+        pendingPaymentId = null;
+        refreshLiveStats();
+      } catch (error) {
+        showCourseMessage(error.message, true);
+      }
+    }
+
+    function closeCourseModal() {
+      courseModalVisibility(false);
+    }
+    window.closeCourseModal = closeCourseModal;
+
+    document.getElementById('programGrid').addEventListener('click', event => {
+      if (event.target.closest('a, button')) return;
+      const card = event.target.closest('[data-program-slug]');
+      if (!card) return;
+      openProgramCourses(card.dataset.programSlug, card.dataset.programTitle, card.dataset.programDescription);
+    });
+    document.getElementById('programGrid').addEventListener('keydown', event => {
+      if (event.target.closest('a, button')) return;
+      const card = event.target.closest('[data-program-slug]');
+      if (card && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault();
+        openProgramCourses(card.dataset.programSlug, card.dataset.programTitle, card.dataset.programDescription);
+      }
+    });
+    document.querySelectorAll('#programGrid > *').forEach(card => {
+      const title = card.querySelector('h3')?.textContent.trim();
+      const slugByTitle = {
+        'Biological Sciences': 'biological-sciences',
+        'Bioinformatics & Data': 'bioinformatics-data',
+        'Programming & Tech': 'programming-tech',
+        'AI-Powered Research & Vibe Coding': 'ai-research-vibe-coding',
+        'IELTS Preparation': 'ielts-preparation',
+        'Scholarship Guidance': 'scholarship-guidance',
+        'Training & Workshops': 'training-workshops',
+        'Custom Training': 'custom-training'
+      };
+      if (slugByTitle[title]) {
+        card.dataset.programSlug = slugByTitle[title];
+        card.dataset.programTitle = title;
+        card.dataset.programDescription = card.querySelector('p')?.textContent.trim() || '';
+        card.classList.add('cursor-pointer');
+        card.setAttribute('role', 'button');
+        card.tabIndex = 0;
+      }
+    });
+    document.querySelectorAll('[data-course-tab]').forEach(button => {
+      button.addEventListener('click', () => {
+        selectedCourseTab = button.dataset.courseTab;
+        renderCourseList();
+      });
+    });
+    document.getElementById('courseBackButton').addEventListener('click', renderCourseList);
+    document.getElementById('courseEnrollButton').addEventListener('click', () => {
+      if (selectedCourse?.price_cents > 0) {
+        if (!sessionStorage.getItem('zsa-student-token')) {
+          showCourseMessage('Create a learner account or log in to enroll.', true);
+          toggleJoinModal();
+          return;
+        }
+        const token = sessionStorage.getItem('zsa-student-token');
+        fetch(`/api/courses/${selectedCourse.id}/financial-aid/me`, { headers: { 'Authorization': `Bearer ${token}` } })
+          .then(response => response.ok ? response.json() : { status: null })
+          .then(aid => {
+            if (aid.status === 'approved' && aid.requested_amount_cents >= selectedCourse.price_cents) submitEnrollment(false);
+            else beginMockCheckout();
+          })
+          .catch(beginMockCheckout);
+      } else {
+        submitEnrollment(false);
+      }
+    });
+    document.getElementById('mockPaymentConfirm').addEventListener('click', confirmMockCheckout);
+    document.getElementById('courseAidToggle').addEventListener('click', () => {
+      if (!sessionStorage.getItem('zsa-student-token')) {
+        showCourseMessage('Create a learner account or log in to apply for financial aid.', true);
+        toggleJoinModal();
+        return;
+      }
+      document.getElementById('financialAidForm').classList.toggle('hidden');
+    });
+    document.getElementById('financialAidForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      if (!selectedCourse) return;
+      const token = sessionStorage.getItem('zsa-student-token');
+      try {
+        const response = await fetch(`/api/courses/${selectedCourse.id}/financial-aid`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+          body: JSON.stringify({
+            requested_amount_cents: Math.round(Number(document.getElementById('aidAmount').value) * 100),
+            reason: document.getElementById('aidReason').value
+          })
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.detail || 'Application could not be submitted.');
+        event.target.reset();
+        event.target.classList.add('hidden');
+        showCourseMessage('Your financial aid request has been sent for review.');
+      } catch (error) {
+        showCourseMessage(error.message, true);
+      }
+    });
+
+    let studentAuthMode = 'register';
+    document.getElementById('studentAuthModeToggle').addEventListener('click', () => {
+      studentAuthMode = studentAuthMode === 'register' ? 'login' : 'register';
+      const registering = studentAuthMode === 'register';
+      document.getElementById('studentNameField').classList.toggle('hidden', !registering);
+      document.getElementById('studentFullName').required = registering;
+      document.getElementById('studentPassword').minLength = registering ? 12 : 1;
+      document.getElementById('studentPassword').autocomplete = registering ? 'new-password' : 'current-password';
+      document.getElementById('studentAuthSubmit').textContent = registering ? 'Sign Up' : 'Log In';
+      document.getElementById('studentAuthPrompt').textContent = registering ? 'Already have an account?' : 'New to the academy?';
+      document.getElementById('studentAuthModeToggle').textContent = registering ? 'Log in' : 'Create an account';
+      document.querySelector('#joinModal h3').textContent = registering ? 'Create an Account' : 'Welcome Back';
+      document.getElementById('studentAuthMessage').classList.add('hidden');
+    });
+    document.getElementById('studentAuthForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const message = document.getElementById('studentAuthMessage');
+      message.classList.add('hidden');
+      const registering = studentAuthMode === 'register';
+      const payload = {
+        email: document.getElementById('studentEmail').value,
+        password: document.getElementById('studentPassword').value
+      };
+      if (registering) payload.full_name = document.getElementById('studentFullName').value;
+      try {
+        const response = await fetch(registering ? '/api/students/register' : '/api/students/login', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.detail || 'Account request failed.');
+        sessionStorage.setItem('zsa-student-token', result.access_token);
+        sessionStorage.setItem('zsa-student-name', result.student?.full_name || document.getElementById('studentFullName').value);
+        sessionStorage.setItem('zsa-student-email', result.student?.email || payload.email);
+        toggleJoinModal();
+        updateStudentNavigation();
+        refreshLiveStats();
+      } catch (error) {
+        message.textContent = error.message;
+        message.classList.remove('hidden');
+      }
+    });
+
+    let studentDashboardData = null;
+    let activeDashboardTab = 'courses';
+    function updateStudentNavigation() {
+      const signedIn = Boolean(sessionStorage.getItem('zsa-student-token'));
+      document.getElementById('joinNavButton').classList.toggle('hidden', signedIn);
+      const dashboardButton = document.getElementById('studentDashboardNav');
+      dashboardButton.classList.toggle('hidden', !signedIn);
+      dashboardButton.classList.toggle('flex', signedIn);
+      const name = sessionStorage.getItem('zsa-student-name') || 'Learner';
+      const initials = name.trim().split(/\s+/).slice(0, 2).map(part => part[0]?.toUpperCase() || '').join('') || 'ZS';
+      document.getElementById('studentAvatar').textContent = initials;
+      document.getElementById('dashboardAvatar').textContent = initials;
+      if (signedIn) document.getElementById('studentDashboardTitle').textContent = 'My Dashboard';
+    }
+
+    async function loadStudentDashboard() {
+      const token = sessionStorage.getItem('zsa-student-token');
+      const error = document.getElementById('dashboardError');
+      error.classList.add('hidden');
+      try {
+        const response = await fetch('/api/students/me/dashboard', { headers: { 'Authorization': `Bearer ${token}` } });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.detail || 'Unable to load your dashboard. Please sign in again.');
+        studentDashboardData = result;
+        sessionStorage.setItem('zsa-student-name', result.student.full_name);
+        sessionStorage.setItem('zsa-student-email', result.student.email);
+        updateStudentNavigation();
+        document.getElementById('dashboardWelcome').textContent = `Welcome back, ${result.student.full_name}`;
+        document.getElementById('dashboardEmail').textContent = result.student.email;
+        renderStudentDashboardTab(activeDashboardTab);
+      } catch (exception) {
+        error.textContent = exception.message;
+        error.classList.remove('hidden');
+      }
+    }
+
+    function dashboardEmpty(message) {
+      const empty = document.createElement('div');
+      empty.className = 'lg:col-span-2 p-8 text-center rounded-2xl bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400';
+      empty.textContent = message;
+      return empty;
+    }
+
+    function dashboardCard() {
+      const card = document.createElement('article');
+      card.className = 'p-6 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-white/10 shadow-lg';
+      return card;
+    }
+
+    function renderStudentDashboardTab(tab) {
+      activeDashboardTab = tab;
+      document.querySelectorAll('[data-dashboard-tab]').forEach(button => {
+        const active = button.dataset.dashboardTab === tab;
+        button.className = `dashboard-tab px-5 py-2.5 rounded-full font-semibold whitespace-nowrap ${active ? 'bg-primary text-white' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10'}`;
+        button.setAttribute('aria-selected', String(active));
+      });
+      const panel = document.getElementById('studentDashboardPanel');
+      panel.replaceChildren();
+      if (!studentDashboardData) return;
+
+      if (tab === 'courses') {
+        const courses = studentDashboardData.courses || [];
+        if (!courses.length) { panel.appendChild(dashboardEmpty('You are not enrolled in a course yet. Explore a program to get started.')); return; }
+        const filterBar = document.createElement('div'); filterBar.className = 'lg:col-span-2 flex gap-2';
+        const courseGrid = document.createElement('div'); courseGrid.className = 'lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-5';
+        const renderCourses = filter => {
+          courseGrid.replaceChildren();
+          const visible = courses.filter(item => filter === 'all' || (filter === 'completed' ? item.completed : !item.completed));
+          if (!visible.length) { const empty = dashboardEmpty(filter === 'completed' ? 'Completed courses and certificates will appear here.' : 'No active courses yet.'); empty.classList.remove('lg:col-span-2'); courseGrid.appendChild(empty); return; }
+          visible.forEach(item => {
+            const card = dashboardCard();
+            const completed = item.completed;
+            const heading = document.createElement('h3'); heading.className = 'text-xl font-bold text-slate-900 dark:text-white'; heading.textContent = item.course.title;
+            const meta = document.createElement('p'); meta.className = 'text-sm text-slate-500 dark:text-slate-400 mt-1'; meta.textContent = `${completed ? 'Completed' : 'Active learning'} · ${item.course.schedule || 'Schedule to be announced'}`;
+            const progressLabel = document.createElement('div'); progressLabel.className = 'flex justify-between text-xs font-semibold mt-6 mb-2';
+            const label = document.createElement('span'); label.textContent = 'Course progress';
+            const value = document.createElement('span'); value.className = 'text-primary'; value.textContent = `${item.progress_percent}%`;
+            progressLabel.append(label, value);
+            const track = document.createElement('div'); track.className = 'h-2.5 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden';
+            const fill = document.createElement('div'); fill.className = `h-full rounded-full ${completed ? 'bg-emerald-500' : 'bg-gradient-to-r from-primary to-secondary'}`; fill.style.width = `${Math.max(0, Math.min(100, item.progress_percent))}%`; track.appendChild(fill);
+            card.append(heading, meta, progressLabel, track);
+            courseGrid.appendChild(card);
+          });
+        };
+        [['active', 'Active'], ['completed', 'Completed'], ['all', 'All courses']].forEach(([filter, label]) => {
+          const button = document.createElement('button'); button.type = 'button'; button.className = 'px-4 py-2 rounded-full border border-slate-200 dark:border-white/10 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:border-primary'; button.textContent = label;
+          button.addEventListener('click', () => { filterBar.querySelectorAll('button').forEach(item => item.className = 'px-4 py-2 rounded-full border border-slate-200 dark:border-white/10 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:border-primary'); button.className = 'px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold'; renderCourses(filter); });
+          filterBar.appendChild(button);
+          if (filter === 'active') button.className = 'px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold';
+        });
+        panel.append(filterBar, courseGrid);
+        renderCourses('active');
+      } else if (tab === 'payments') {
+        const payments = studentDashboardData.payments || [];
+        if (!payments.length) { panel.appendChild(dashboardEmpty('Invoices and payment activity will appear here.')); return; }
+        payments.forEach(payment => {
+          const card = dashboardCard();
+          const heading = document.createElement('h3'); heading.className = 'text-lg font-bold text-slate-900 dark:text-white'; heading.textContent = payment.course_title;
+          const invoice = document.createElement('p'); invoice.className = 'text-sm text-slate-500 mt-1'; invoice.textContent = `Invoice ${payment.invoice_number} · ${new Date(payment.created_at).toLocaleDateString()}`;
+          const details = document.createElement('p'); details.className = 'mt-4 font-semibold'; details.textContent = `${payment.currency} ${(payment.amount_cents / 100).toFixed(2)} · ${payment.status.toUpperCase()}`;
+          const actions = document.createElement('div'); actions.className = 'flex flex-wrap gap-3 mt-4';
+          const invoiceButton = document.createElement('button'); invoiceButton.className = 'text-primary font-semibold hover:underline'; invoiceButton.textContent = 'Download invoice'; invoiceButton.addEventListener('click', () => downloadStudentFile(`/api/students/me/payments/${payment.id}/invoice`, `${payment.invoice_number}.html`));
+          actions.appendChild(invoiceButton);
+          if (payment.status === 'pending') {
+            const payButton = document.createElement('button'); payButton.className = 'px-4 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold'; payButton.textContent = 'Complete mock payment';
+            payButton.addEventListener('click', async () => {
+              const response = await fetch(`/api/payments/${payment.id}/mock-confirm`, { method: 'POST', headers: { 'Authorization': `Bearer ${sessionStorage.getItem('zsa-student-token')}` } });
+              if (response.ok) { await loadStudentDashboard(); refreshLiveStats(); }
+              else { const result = await response.json(); document.getElementById('dashboardError').textContent = result.detail || 'Payment could not be completed.'; document.getElementById('dashboardError').classList.remove('hidden'); }
+            });
+            actions.appendChild(payButton);
+          }
+          card.append(heading, invoice, details, actions); panel.appendChild(card);
+        });
+      } else if (tab === 'certificates') {
+        const certificates = studentDashboardData.certificates || [];
+        if (!certificates.length) { panel.appendChild(dashboardEmpty('Certificates are issued automatically after an admin marks a course complete.')); return; }
+        certificates.forEach(certificate => {
+          const card = dashboardCard();
+          const heading = document.createElement('h3'); heading.className = 'text-lg font-bold text-slate-900 dark:text-white'; heading.textContent = certificate.course_title;
+          const issueDate = document.createElement('p'); issueDate.className = 'text-sm text-slate-500 mt-1'; issueDate.textContent = `Issued ${new Date(certificate.issued_at).toLocaleDateString()} · Verification ${certificate.verification_code}`;
+          const actions = document.createElement('div'); actions.className = 'flex flex-wrap gap-4 mt-5';
+          const view = document.createElement('a'); view.href = certificate.verify_url; view.target = '_blank'; view.rel = 'noopener noreferrer'; view.className = 'text-primary font-semibold hover:underline'; view.textContent = 'View / Verify';
+          const download = document.createElement('button'); download.className = 'text-primary font-semibold hover:underline'; download.textContent = 'Download certificate'; download.addEventListener('click', () => downloadStudentFile(`/api/students/me/certificates/${certificate.id}/download`, `ZSA-Certificate-${certificate.id}.svg`));
+          const share = document.createElement('button'); share.className = 'text-primary font-semibold hover:underline'; share.textContent = 'Share'; share.addEventListener('click', async () => { const url = new URL(certificate.verify_url, location.origin).href; try { await navigator.clipboard.writeText(url); share.textContent = 'Link copied'; } catch (_) { window.prompt('Copy this certificate link', url); } });
+          actions.append(view, download, share); card.append(heading, issueDate, actions); panel.appendChild(card);
+        });
+      } else if (tab === 'aid') {
+        const requests = studentDashboardData.financial_aid || [];
+        if (!requests.length) { panel.appendChild(dashboardEmpty('Your financial aid and fee waiver applications will appear here.')); return; }
+        requests.forEach(request => {
+          const card = dashboardCard();
+          const heading = document.createElement('h3'); heading.className = 'text-lg font-bold text-slate-900 dark:text-white'; heading.textContent = request.course_title;
+          const status = document.createElement('p'); status.className = 'mt-3 inline-flex px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase'; status.textContent = request.status;
+          const amount = document.createElement('p'); amount.className = 'text-sm mt-3'; amount.textContent = `Requested discount: ${(request.requested_amount_cents / 100).toFixed(2)}`;
+          const note = document.createElement('p'); note.className = 'text-sm text-slate-500 dark:text-slate-400 mt-2'; note.textContent = request.review_note ? `Review note: ${request.review_note}` : 'No review note yet.';
+          card.append(heading, status, amount, note); panel.appendChild(card);
+        });
+      } else if (tab === 'profile') {
+        const profile = studentDashboardData.profile || {};
+        const card = dashboardCard(); card.classList.add('lg:col-span-2');
+        const form = document.createElement('form'); form.className = 'space-y-4';
+        const title = document.createElement('h3'); title.className = 'text-xl font-bold text-slate-900 dark:text-white'; title.textContent = 'Learner profile';
+        const fields = [
+          ['program_interest', 'Program interest', profile.program_interest || '', 'text'],
+          ['timezone', 'Timezone', profile.timezone || '', 'text']
+        ];
+        form.appendChild(title);
+        fields.forEach(([name, label, value, type]) => { const wrap = document.createElement('div'); const caption = document.createElement('label'); caption.className = 'block text-sm mb-1'; caption.textContent = label; const input = document.createElement('input'); input.name = name; input.type = type; input.value = value; input.className = 'w-full rounded-xl px-4 py-3 bg-slate-50 dark:bg-dark-900 border border-slate-200 dark:border-white/10'; wrap.append(caption, input); form.appendChild(wrap); });
+        const bioWrap = document.createElement('div'); const bioLabel = document.createElement('label'); bioLabel.className = 'block text-sm mb-1'; bioLabel.textContent = 'About you'; const bio = document.createElement('textarea'); bio.name = 'bio'; bio.rows = 4; bio.maxLength = 2000; bio.value = profile.bio || ''; bio.className = 'w-full rounded-xl px-4 py-3 bg-slate-50 dark:bg-dark-900 border border-slate-200 dark:border-white/10'; bioWrap.append(bioLabel, bio); form.appendChild(bioWrap);
+        const save = document.createElement('button'); save.type = 'submit'; save.className = 'px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-bold'; save.textContent = 'Save profile'; form.appendChild(save);
+        form.addEventListener('submit', async event => { event.preventDefault(); const values = Object.fromEntries(new FormData(form).entries()); const response = await fetch('/api/students/me/profile', { method: 'PATCH', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${sessionStorage.getItem('zsa-student-token')}` }, body: JSON.stringify(values) }); if (response.ok) { studentDashboardData.profile = await response.json(); save.textContent = 'Saved'; } });
+        const logout = document.createElement('button'); logout.type = 'button'; logout.className = 'block mt-6 text-red-500 font-semibold hover:underline'; logout.textContent = 'Log out of this device'; logout.addEventListener('click', () => { sessionStorage.removeItem('zsa-student-token'); sessionStorage.removeItem('zsa-student-name'); sessionStorage.removeItem('zsa-student-email'); updateStudentNavigation(); closeStudentDashboard(); });
+        card.append(form, logout); panel.appendChild(card);
+      }
+    }
+
+    async function downloadStudentFile(path, filename) {
+      const response = await fetch(path, { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('zsa-student-token')}` } });
+      if (!response.ok) { document.getElementById('dashboardError').textContent = 'The requested download is unavailable.'; document.getElementById('dashboardError').classList.remove('hidden'); return; }
+      const blobUrl = URL.createObjectURL(await response.blob());
+      const link = document.createElement('a'); link.href = blobUrl; link.download = filename; link.click(); window.setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+    }
+
+    async function openStudentDashboard() {
+      const modal = document.getElementById('studentDashboard');
+      modal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      activeDashboardTab = 'courses';
+      await loadStudentDashboard();
+    }
+    function closeStudentDashboard() {
+      document.getElementById('studentDashboard').classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+    window.openStudentDashboard = openStudentDashboard;
+    window.closeStudentDashboard = closeStudentDashboard;
+    document.querySelectorAll('[data-dashboard-tab]').forEach(button => button.addEventListener('click', () => renderStudentDashboardTab(button.dataset.dashboardTab)));
+    updateStudentNavigation();
+
+    fetch('/api/analytics/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ page_path: window.location.pathname }),
+      keepalive: true
+    }).catch(() => {}).finally(refreshLiveStats);
+  </script>
+</body>
+
+</html>
