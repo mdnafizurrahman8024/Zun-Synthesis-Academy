@@ -98,16 +98,66 @@
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
-    .course-rich-content > :first-child { margin-top: 0; }
-    .course-rich-content > :last-child { margin-bottom: 0; }
-    .course-rich-content h1, .course-rich-content h2, .course-rich-content h3, .course-rich-content h4 { margin: 1rem 0 .5rem; font-weight: 700; color: inherit; }
-    .course-rich-content p, .course-rich-content ul, .course-rich-content ol, .course-rich-content blockquote { margin: .75rem 0; }
-    .course-rich-content ul, .course-rich-content ol { padding-left: 1.5rem; }
-    .course-rich-content ul { list-style: disc; }
-    .course-rich-content ol { list-style: decimal; }
-    .course-rich-content a { color: #0284c7; text-decoration: underline; }
-    .course-rich-content img { display: block; max-width: 100%; height: auto; margin: 1rem 0; border-radius: 1rem; }
-    .course-rich-content iframe { display: block; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; height: auto; margin: 1rem 0; border: 0; border-radius: 1rem; }
+    .course-rich-content> :first-child {
+      margin-top: 0;
+    }
+
+    .course-rich-content> :last-child {
+      margin-bottom: 0;
+    }
+
+    .course-rich-content h1,
+    .course-rich-content h2,
+    .course-rich-content h3,
+    .course-rich-content h4 {
+      margin: 1rem 0 .5rem;
+      font-weight: 700;
+      color: inherit;
+    }
+
+    .course-rich-content p,
+    .course-rich-content ul,
+    .course-rich-content ol,
+    .course-rich-content blockquote {
+      margin: .75rem 0;
+    }
+
+    .course-rich-content ul,
+    .course-rich-content ol {
+      padding-left: 1.5rem;
+    }
+
+    .course-rich-content ul {
+      list-style: disc;
+    }
+
+    .course-rich-content ol {
+      list-style: decimal;
+    }
+
+    .course-rich-content a {
+      color: #0284c7;
+      text-decoration: underline;
+    }
+
+    .course-rich-content img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 1rem 0;
+      border-radius: 1rem;
+    }
+
+    .course-rich-content iframe {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+      margin: 1rem 0;
+      border: 0;
+      border-radius: 1rem;
+    }
   </style>
 </head>
 
@@ -147,7 +197,8 @@
         </button>
         <button id="studentDashboardNav" type="button" onclick="openStudentDashboard()"
           class="hidden items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-full font-semibold hover:border-primary transition-colors">
-          <span id="studentAvatar" class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center text-xs font-bold">ZS</span>
+          <span id="studentAvatar"
+            class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center text-xs font-bold">ZS</span>
           <span>My Dashboard</span>
         </button>
       </div>
@@ -192,54 +243,93 @@
       <form id="studentAuthForm" class="space-y-4">
         <div id="studentNameField">
           <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Full Name</label>
-          <input type="text"
-            id="studentFullName" name="full_name" autocomplete="name" minlength="2" required
+          <input type="text" id="studentFullName" name="full_name" autocomplete="name" minlength="2" required
             class="w-full bg-slate-50 dark:bg-dark-900/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-2.5 text-slate-800 dark:text-white focus:outline-none focus:border-primary transition-colors"
             placeholder="John Doe">
         </div>
         <div>
           <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Email Address</label>
-          <input type="email"
-            id="studentEmail" name="email" autocomplete="email" required
+          <input type="email" id="studentEmail" name="email" autocomplete="email" required
             class="w-full bg-slate-50 dark:bg-dark-900/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-2.5 text-slate-800 dark:text-white focus:outline-none focus:border-primary transition-colors"
             placeholder="john@example.com">
         </div>
         <div>
           <label class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Password</label>
-          <input type="password"
-            id="studentPassword" name="password" autocomplete="new-password" required minlength="12"
+          <input type="password" id="studentPassword" name="password" autocomplete="new-password" required
+            minlength="12"
             class="w-full bg-slate-50 dark:bg-dark-900/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-2.5 text-slate-800 dark:text-white focus:outline-none focus:border-primary transition-colors"
             placeholder="********">
         </div>
         <p id="studentAuthMessage" class="hidden text-sm text-red-500" role="status"></p>
         <button id="studentAuthSubmit" type="submit"
-          class="w-full py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-bold hover:shadow-lg transition-all mt-2">Sign Up</button>
+          class="w-full py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-bold hover:shadow-lg transition-all mt-2">Sign
+          Up</button>
       </form>
 
       <p class="text-center text-sm text-slate-500 dark:text-slate-400 mt-6">
-        <span id="studentAuthPrompt">Already have an account?</span> <button id="studentAuthModeToggle" type="button" class="text-primary hover:underline">Log in</button>
+        <!-- Demo access: temporary guest login, no backend required -->
+      <div class="relative flex items-center my-6">
+        <div class="flex-grow border-t border-slate-200 dark:border-slate-600"></div>
+        <span class="flex-shrink-0 mx-4 text-slate-400 text-sm">Just exploring?</span>
+        <div class="flex-grow border-t border-slate-200 dark:border-slate-600"></div>
+      </div>
+      <button id="guestLoginButton" type="button" onclick="startDemoMode()"
+        class="w-full flex items-center justify-center gap-3 py-2.5 rounded-lg font-semibold text-primary dark:text-sky-300 bg-primary/10 dark:bg-primary/20 border-primary/30 hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">
+        <i class="fas fa-user-astronaut"></i> Login as Guest / Demo
+      </button>
+      <p class="text-center text-xs text-slate-400 mt-2">Opens a sample dashboard with dummy courses, invoices and
+        certificates.</p>
+
+      <span id="studentAuthPrompt">Already have an account?</span> <button id="studentAuthModeToggle" type="button"
+        class="text-primary hover:underline">Log in</button>
       </p>
     </div>
   </div>
 
   <!-- Student Dashboard -->
-  <div id="studentDashboard" class="fixed inset-0 z-[120] hidden overflow-y-auto bg-slate-50 dark:bg-dark-900" role="dialog" aria-modal="true" aria-labelledby="studentDashboardTitle">
+  <div id="studentDashboard" class="fixed inset-0 z-[120] hidden overflow-y-auto bg-slate-50 dark:bg-dark-900"
+    role="dialog" aria-modal="true" aria-labelledby="studentDashboardTitle">
     <div class="min-h-screen">
-      <header class="sticky top-0 z-20 bg-white/90 dark:bg-dark-900/90 backdrop-blur-xl border-b border-slate-200 dark:border-white/10">
+      <header
+        class="sticky top-0 z-20 bg-white/90 dark:bg-dark-900/90 backdrop-blur-xl border-b border-slate-200 dark:border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
-          <div class="flex items-center gap-3 min-w-0"><span id="dashboardAvatar" class="w-11 h-11 shrink-0 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold">ZS</span><div class="min-w-0"><p class="text-xs text-primary font-bold tracking-widest uppercase">Learner space</p><h2 id="studentDashboardTitle" class="text-xl md:text-2xl font-heading font-bold text-slate-900 dark:text-white truncate">My Dashboard</h2></div></div>
-          <button type="button" onclick="closeStudentDashboard()" aria-label="Close student dashboard" class="w-11 h-11 shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-white hover:text-red-500 transition-colors"><i class="fas fa-times"></i></button>
+          <div class="flex items-center gap-3 min-w-0"><span id="dashboardAvatar"
+              class="w-11 h-11 shrink-0 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold">ZS</span>
+            <div class="min-w-0">
+              <p class="text-xs text-primary font-bold tracking-widest uppercase">Learner space</p>
+              <h2 id="studentDashboardTitle"
+                class="text-xl md:text-2xl font-heading font-bold text-slate-900 dark:text-white truncate">My Dashboard
+              </h2>
+            </div>
+          </div>
+          <button type="button" onclick="closeStudentDashboard()" aria-label="Close student dashboard"
+            class="w-11 h-11 shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-white hover:text-red-500 transition-colors"><i
+              class="fas fa-times"></i></button>
         </div>
       </header>
       <main class="max-w-7xl mx-auto px-6 py-8 md:py-12">
-        <div class="mb-8"><h3 id="dashboardWelcome" class="text-2xl md:text-3xl font-heading font-bold text-slate-900 dark:text-white">Welcome back</h3><p id="dashboardEmail" class="text-slate-500 dark:text-slate-400 mt-1"></p></div>
-        <div id="dashboardError" class="hidden mb-5 p-4 rounded-xl bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-300" role="alert"></div>
+        <div class="mb-8">
+          <h3 id="dashboardWelcome" class="text-2xl md:text-3xl font-heading font-bold text-slate-900 dark:text-white">
+            Welcome back</h3>
+          <p id="dashboardEmail" class="text-slate-500 dark:text-slate-400 mt-1"></p>
+        </div>
+        <div id="dashboardError"
+          class="hidden mb-5 p-4 rounded-xl bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-300" role="alert">
+        </div>
         <div class="flex gap-2 overflow-x-auto pb-2 mb-8" role="tablist" aria-label="Student dashboard sections">
-          <button type="button" data-dashboard-tab="courses" class="dashboard-tab px-5 py-2.5 rounded-full bg-primary text-white font-semibold whitespace-nowrap">My Courses</button>
-          <button type="button" data-dashboard-tab="payments" class="dashboard-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Payment &amp; Billing</button>
-          <button type="button" data-dashboard-tab="certificates" class="dashboard-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Certificates</button>
-          <button type="button" data-dashboard-tab="aid" class="dashboard-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Financial Aid Status</button>
-          <button type="button" data-dashboard-tab="profile" class="dashboard-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Profile</button>
+          <button type="button" data-dashboard-tab="courses"
+            class="dashboard-tab px-5 py-2.5 rounded-full bg-primary text-white font-semibold whitespace-nowrap">My
+            Courses</button>
+          <button type="button" data-dashboard-tab="payments"
+            class="dashboard-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Payment
+            &amp; Billing</button>
+          <button type="button" data-dashboard-tab="certificates"
+            class="dashboard-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Certificates</button>
+          <button type="button" data-dashboard-tab="aid"
+            class="dashboard-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Financial
+            Aid Status</button>
+          <button type="button" data-dashboard-tab="profile"
+            class="dashboard-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Profile</button>
         </div>
         <section id="studentDashboardPanel" class="grid grid-cols-1 lg:grid-cols-2 gap-5" aria-live="polite"></section>
       </main>
@@ -247,68 +337,180 @@
   </div>
 
   <!-- Full-Screen Course Details & Enrollment -->
-  <div id="courseModal" class="fixed inset-0 z-[110] hidden overflow-y-auto bg-slate-50 dark:bg-dark-900" role="dialog" aria-modal="true" aria-labelledby="courseModalTitle">
+  <div id="courseModal" class="fixed inset-0 z-[110] hidden overflow-y-auto bg-slate-50 dark:bg-dark-900" role="dialog"
+    aria-modal="true" aria-labelledby="courseModalTitle">
     <div class="min-h-screen relative">
-      <div class="sticky top-0 z-10 bg-white/90 dark:bg-dark-900/90 backdrop-blur-xl border-b border-slate-200 dark:border-white/10">
+      <div
+        class="sticky top-0 z-10 bg-white/90 dark:bg-dark-900/90 backdrop-blur-xl border-b border-slate-200 dark:border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
-          <div class="min-w-0"><p class="text-xs text-primary font-bold tracking-widest uppercase">Program details</p><h2 id="courseModalTitle" class="text-xl md:text-2xl font-heading font-bold text-slate-900 dark:text-white truncate">Courses</h2></div>
-          <button type="button" onclick="closeCourseModal()" aria-label="Close course details" class="w-11 h-11 shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-white hover:text-red-500 transition-colors"><i class="fas fa-times"></i></button>
+          <div class="min-w-0">
+            <p class="text-xs text-primary font-bold tracking-widest uppercase">Program details</p>
+            <h2 id="courseModalTitle"
+              class="text-xl md:text-2xl font-heading font-bold text-slate-900 dark:text-white truncate">Courses</h2>
+          </div>
+          <button type="button" onclick="closeCourseModal()" aria-label="Close course details"
+            class="w-11 h-11 shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-white hover:text-red-500 transition-colors"><i
+              class="fas fa-times"></i></button>
         </div>
       </div>
       <main class="max-w-7xl mx-auto px-6 py-8 md:py-12">
         <p id="courseModalDescription" class="max-w-3xl text-slate-600 dark:text-slate-400 mb-8"></p>
         <div class="flex gap-2 overflow-x-auto pb-2 mb-8" role="tablist" aria-label="Course status">
-          <button type="button" data-course-tab="upcoming" class="course-tab px-5 py-2.5 rounded-full bg-primary text-white font-semibold whitespace-nowrap">Upcoming Courses</button>
-          <button type="button" data-course-tab="active" class="course-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Current Courses</button>
-          <button type="button" data-course-tab="closed" class="course-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Previous/Closed Courses</button>
+          <button type="button" data-course-tab="upcoming"
+            class="course-tab px-5 py-2.5 rounded-full bg-primary text-white font-semibold whitespace-nowrap">Upcoming
+            Courses</button>
+          <button type="button" data-course-tab="active"
+            class="course-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Current
+            Courses</button>
+          <button type="button" data-course-tab="closed"
+            class="course-tab px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 font-semibold whitespace-nowrap">Previous/Closed
+            Courses</button>
         </div>
         <div id="courseList" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
-        <section id="courseDetailPanel" class="hidden mt-10 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-white/10 rounded-3xl p-6 md:p-10 shadow-xl">
-          <button id="courseBackButton" type="button" class="text-primary font-semibold hover:underline mb-6"><i class="fas fa-arrow-left mr-2"></i>All courses</button>
+        <section id="courseDetailPanel"
+          class="hidden mt-10 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-white/10 rounded-3xl p-6 md:p-10 shadow-xl">
+          <button id="courseBackButton" type="button" class="text-primary font-semibold hover:underline mb-6"><i
+              class="fas fa-arrow-left mr-2"></i>All courses</button>
           <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
-            <div><span id="courseDetailStatus" class="inline-flex px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-3"></span><h3 id="courseDetailTitle" class="text-2xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white mb-3"></h3><div id="courseDetailDescription" class="max-w-3xl text-slate-600 dark:text-slate-400 course-rich-content"></div></div>
-            <div class="shrink-0 bg-slate-100 dark:bg-dark-900/70 rounded-2xl p-5 min-w-48"><p class="text-xs text-slate-500 uppercase tracking-widest mb-1">Course fee</p><p id="courseDetailPrice" class="text-2xl font-bold text-slate-900 dark:text-white"></p><p id="courseDetailOffer" class="hidden text-xs text-slate-500 line-through mt-1"></p><span id="courseDetailOfferBadge" class="hidden mt-2 px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-500/10 text-rose-700 dark:text-rose-300 text-xs font-bold"></span><p id="courseDetailPaymentHint" class="text-xs text-slate-500 dark:text-slate-400 mt-1"></p></div>
+            <div><span id="courseDetailStatus"
+                class="inline-flex px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-3"></span>
+              <h3 id="courseDetailTitle"
+                class="text-2xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white mb-3"></h3>
+              <div id="courseDetailDescription"
+                class="max-w-3xl text-slate-600 dark:text-slate-400 course-rich-content"></div>
+            </div>
+            <div class="shrink-0 bg-slate-100 dark:bg-dark-900/70 rounded-2xl p-5 min-w-48">
+              <p class="text-xs text-slate-500 uppercase tracking-widest mb-1">Course fee</p>
+              <p id="courseDetailPrice" class="text-2xl font-bold text-slate-900 dark:text-white"></p>
+              <p id="courseDetailOffer" class="hidden text-xs text-slate-500 line-through mt-1"></p><span
+                id="courseDetailOfferBadge"
+                class="hidden mt-2 px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-500/10 text-rose-700 dark:text-rose-300 text-xs font-bold"></span>
+              <p id="courseDetailPaymentHint" class="text-xs text-slate-500 dark:text-slate-400 mt-1"></p>
+            </div>
           </div>
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-dark-900/50"><h4 class="font-bold text-slate-800 dark:text-white mb-2"><i class="fas fa-chalkboard-teacher text-primary mr-2"></i>Instructor</h4><p id="courseDetailInstructor" class="text-sm text-slate-600 dark:text-slate-400"></p></div>
-            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-dark-900/50"><h4 class="font-bold text-slate-800 dark:text-white mb-2"><i class="fas fa-calendar-days text-primary mr-2"></i>Schedule</h4><p id="courseDetailSchedule" class="text-sm text-slate-600 dark:text-slate-400"></p></div>
-            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-dark-900/50"><h4 class="font-bold text-slate-800 dark:text-white mb-2"><i class="fas fa-list-check text-primary mr-2"></i>Syllabus</h4><ul id="courseDetailSyllabus" class="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-400"></ul></div>
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-dark-900/50">
+              <h4 class="font-bold text-slate-800 dark:text-white mb-2"><i
+                  class="fas fa-chalkboard-teacher text-primary mr-2"></i>Instructor</h4>
+              <p id="courseDetailInstructor" class="text-sm text-slate-600 dark:text-slate-400"></p>
+            </div>
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-dark-900/50">
+              <h4 class="font-bold text-slate-800 dark:text-white mb-2"><i
+                  class="fas fa-calendar-days text-primary mr-2"></i>Schedule</h4>
+              <p id="courseDetailSchedule" class="text-sm text-slate-600 dark:text-slate-400"></p>
+            </div>
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-dark-900/50">
+              <h4 class="font-bold text-slate-800 dark:text-white mb-2"><i
+                  class="fas fa-list-check text-primary mr-2"></i>Syllabus</h4>
+              <ul id="courseDetailSyllabus"
+                class="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-400"></ul>
+            </div>
           </div>
           <div class="flex flex-wrap gap-3">
-            <button id="courseEnrollButton" type="button" class="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-bold hover:shadow-lg hover:shadow-primary/30 transition-all">Enroll Now</button>
-            <button id="courseAidToggle" type="button" class="px-6 py-3 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-white rounded-full font-semibold hover:border-primary transition-colors">Apply for Financial Aid</button>
+            <button id="courseEnrollButton" type="button"
+              class="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-bold hover:shadow-lg hover:shadow-primary/30 transition-all">Enroll
+              Now</button>
+            <button id="courseAidToggle" type="button"
+              class="px-6 py-3 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-white rounded-full font-semibold hover:border-primary transition-colors">Apply
+              for Financial Aid</button>
           </div>
-          <p id="courseActionMessage" class="hidden mt-4 text-sm font-medium" role="status"></p>
-          <div id="mockPaymentPanel" class="hidden mt-6 max-w-2xl p-6 rounded-2xl border border-amber-300 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10">
-            <h4 class="font-bold text-slate-900 dark:text-white mb-2"><i class="fas fa-shield-halved text-amber-500 mr-2"></i>Mock checkout</h4>
-            <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">This demonstration checkout does not process payments or collect card details.</p>
-            <p id="mockPaymentSummary" class="text-sm font-semibold text-slate-800 dark:text-white mb-4"></p>
-            <button id="mockPaymentConfirm" type="button" class="px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-dark-900 rounded-full font-semibold">Complete mock enrollment</button>
-          </div>
-          <form id="financialAidForm" class="hidden mt-6 max-w-2xl space-y-4 p-6 rounded-2xl bg-slate-50 dark:bg-dark-900/50 border border-slate-200 dark:border-white/10">
-            <h4 class="font-bold text-slate-900 dark:text-white">Financial Aid / Fee Waiver Application</h4>
-            <div><label for="aidAmount" class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Requested discount amount</label><input id="aidAmount" type="number" min="0" step="0.01" required class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-800 dark:text-white" placeholder="0.00"></div>
-            <div><label for="aidReason" class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Why are you applying?</label><textarea id="aidReason" required minlength="20" maxlength="5000" rows="4" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-800 dark:text-white" placeholder="Share the circumstances that would help us review your application."></textarea></div>
-            <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-bold">Submit application</button>
-          </form>
-        </section>
-      </main>
+          <button id="demoSyllabusToggle" type="button" onclick="toggleDemoSyllabus()"
+            class="hidden px-6 py-3 bg-white dark:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-white rounded-full font-semibold hover:border-primary transition-colors"><i
+              class="fas fa-list-ol mr-2"></i>View 21-Day Syllabus</button>
     </div>
+    <!-- Demo 21-day syllabus (front-end demo data only) -->
+    <section id="demoSyllabusPanel" class="hidden mt-8">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+        <div>
+          <h4 class="text-xl md:text-2xl font-heading font-bold text-slate-900 dark:text-white">21-Day Syllabus</h4>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">One focused practice goal per day, built around
+            hands-on Python exercises.</p>
+        </div>
+        <span
+          class="inline-flex px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wider"><i
+            class="fas fa-seedling mr-1"></i> Beginner friendly</span>
+      </div>
+      <div id="demoSyllabusWeeks" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
+    </section>
+    <p id="courseActionMessage" class="hidden mt-4 text-sm font-medium" role="status"></p>
+    <div id="mockPaymentPanel"
+      class="hidden mt-6 max-w-2xl p-6 rounded-2xl border border-amber-300 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10">
+      <h4 class="font-bold text-slate-900 dark:text-white mb-2"><i
+          class="fas fa-shield-halved text-amber-500 mr-2"></i>Mock checkout</h4>
+      <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">This demonstration checkout does not process payments
+        or collect card details.</p>
+      <p id="mockPaymentSummary" class="text-sm font-semibold text-slate-800 dark:text-white mb-4"></p>
+      <button id="mockPaymentConfirm" type="button"
+        class="px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-dark-900 rounded-full font-semibold">Complete
+        mock enrollment</button>
+    </div>
+    <form id="financialAidForm"
+      class="hidden mt-6 max-w-2xl space-y-4 p-6 rounded-2xl bg-slate-50 dark:bg-dark-900/50 border border-slate-200 dark:border-white/10">
+      <h4 class="font-bold text-slate-900 dark:text-white">Financial Aid / Fee Waiver Application</h4>
+      <div><label for="aidAmount" class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Requested discount
+          amount</label><input id="aidAmount" type="number" min="0" step="0.01" required
+          class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-800 dark:text-white"
+          placeholder="0.00"></div>
+      <div><label for="aidReason" class="block text-sm text-slate-600 dark:text-slate-400 mb-1">Why are you
+          applying?</label><textarea id="aidReason" required minlength="20" maxlength="5000" rows="4"
+          class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-800 dark:text-white"
+          placeholder="Share the circumstances that would help us review your application."></textarea></div>
+      <button type="submit"
+        class="px-5 py-2.5 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-bold">Submit
+        application</button>
+    </form>
+    </section>
+    </main>
+  </div>
   </div>
 
   <!-- Privacy & Security Policy Modal -->
-  <div id="privacyModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
-    <div class="bg-white dark:bg-slate-800 w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl p-8 shadow-2xl relative mx-4">
-      <button onclick="togglePrivacyModal()" aria-label="Close privacy policy" class="absolute top-4 right-4 text-slate-400 hover:text-red-500 transition-colors"><i class="fas fa-times text-xl"></i></button>
-      <h3 id="privacyTitle" class="text-2xl font-bold text-slate-800 dark:text-white mb-2">Privacy &amp; Security Policy</h3>
-      <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Zun Synthesis Academy is committed to protecting the privacy and security of our learners.</p>
+  <div id="privacyModal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity"
+    role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <div
+      class="bg-white dark:bg-slate-800 w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl p-8 shadow-2xl relative mx-4">
+      <button onclick="togglePrivacyModal()" aria-label="Close privacy policy"
+        class="absolute top-4 right-4 text-slate-400 hover:text-red-500 transition-colors"><i
+          class="fas fa-times text-xl"></i></button>
+      <h3 id="privacyTitle" class="text-2xl font-bold text-slate-800 dark:text-white mb-2">Privacy &amp; Security Policy
+      </h3>
+      <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Zun Synthesis Academy is committed to protecting the
+        privacy and security of our learners.</p>
       <div class="space-y-5 text-sm text-slate-600 dark:text-slate-300">
-        <section><h4 class="font-bold text-slate-800 dark:text-white mb-1">Data Collection</h4><p>We may collect information you provide, such as your name, email address, learning interests, and messages, to respond to enquiries, manage registrations, and deliver educational services. We collect only information relevant to these purposes.</p></section>
-        <section><h4 class="font-bold text-slate-800 dark:text-white mb-1">Data Security</h4><p>We use reasonable administrative and technical safeguards to protect information against unauthorized access, loss, or misuse. No online transmission or storage method can be guaranteed completely secure.</p></section>
-        <section><h4 class="font-bold text-slate-800 dark:text-white mb-1">Cookies</h4><p>This site may use browser storage, including localStorage, to remember your theme preference. Essential cookies or similar technologies may support site functionality. You can manage or clear these through your browser settings.</p></section>
-        <section><h4 class="font-bold text-slate-800 dark:text-white mb-1">Third-Party Integrations</h4><p>We use third-party services for fonts, icons, and potential sign-in or embedded features. Those providers may process data under their own privacy policies. We do not sell your personal information.</p></section>
-        <section><h4 class="font-bold text-slate-800 dark:text-white mb-1">Anonymous Visit Analytics</h4><p>We record the page path and server-side visit time to understand aggregate traffic. We do not collect IP addresses, cookies, browser fingerprints, or account identifiers for this feature.</p></section>
-        <section><h4 class="font-bold text-slate-800 dark:text-white mb-1">Your Rights</h4><p>You may request access to, correction of, or deletion of personal information you have shared with us, subject to applicable requirements. Contact us using the details on this page to make a request or ask a privacy question.</p></section>
+        <section>
+          <h4 class="font-bold text-slate-800 dark:text-white mb-1">Data Collection</h4>
+          <p>We may collect information you provide, such as your name, email address, learning interests, and messages,
+            to respond to enquiries, manage registrations, and deliver educational services. We collect only information
+            relevant to these purposes.</p>
+        </section>
+        <section>
+          <h4 class="font-bold text-slate-800 dark:text-white mb-1">Data Security</h4>
+          <p>We use reasonable administrative and technical safeguards to protect information against unauthorized
+            access, loss, or misuse. No online transmission or storage method can be guaranteed completely secure.</p>
+        </section>
+        <section>
+          <h4 class="font-bold text-slate-800 dark:text-white mb-1">Cookies</h4>
+          <p>This site may use browser storage, including localStorage, to remember your theme preference. Essential
+            cookies or similar technologies may support site functionality. You can manage or clear these through your
+            browser settings.</p>
+        </section>
+        <section>
+          <h4 class="font-bold text-slate-800 dark:text-white mb-1">Third-Party Integrations</h4>
+          <p>We use third-party services for fonts, icons, and potential sign-in or embedded features. Those providers
+            may process data under their own privacy policies. We do not sell your personal information.</p>
+        </section>
+        <section>
+          <h4 class="font-bold text-slate-800 dark:text-white mb-1">Anonymous Visit Analytics</h4>
+          <p>We record the page path and server-side visit time to understand aggregate traffic. We do not collect IP
+            addresses, cookies, browser fingerprints, or account identifiers for this feature.</p>
+        </section>
+        <section>
+          <h4 class="font-bold text-slate-800 dark:text-white mb-1">Your Rights</h4>
+          <p>You may request access to, correction of, or deletion of personal information you have shared with us,
+            subject to applicable requirements. Contact us using the details on this page to make a request or ask a
+            privacy question.</p>
+        </section>
       </div>
       <p class="text-xs text-slate-500 dark:text-slate-400 mt-6">This policy may be updated as our services evolve.</p>
     </div>
@@ -353,13 +555,30 @@
   </section>
 
   <!-- Stats Counter -->
-  <section aria-label="Academy statistics" class="py-16 relative z-10 bg-slate-100/70 dark:bg-dark-800/50 border-y border-slate-200 dark:border-white/5">
+  <section aria-label="Academy statistics"
+    class="py-16 relative z-10 bg-slate-100/70 dark:bg-dark-800/50 border-y border-slate-200 dark:border-white/5">
     <div class="max-w-7xl mx-auto px-6">
       <div id="statsGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-        <div class="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-lg"><p id="statRegisteredStudents" class="text-3xl md:text-4xl font-heading font-bold gradient-text">0</p><p class="mt-2 text-sm md:text-base font-medium text-slate-600 dark:text-slate-300">Registered Learners</p></div>
-        <div class="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-lg"><p id="statActiveCourses" class="text-3xl md:text-4xl font-heading font-bold gradient-text">0</p><p class="mt-2 text-sm md:text-base font-medium text-slate-600 dark:text-slate-300">Active Courses</p></div>
-        <div class="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-lg"><p id="statEnrollments" class="text-3xl md:text-4xl font-heading font-bold gradient-text">0</p><p class="mt-2 text-sm md:text-base font-medium text-slate-600 dark:text-slate-300">Course Enrollments</p></div>
-        <div class="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-lg"><p id="statVisits" class="text-3xl md:text-4xl font-heading font-bold gradient-text">0</p><p class="mt-2 text-sm md:text-base font-medium text-slate-600 dark:text-slate-300">Visits (24h)</p></div>
+        <div
+          class="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-lg">
+          <p id="statRegisteredStudents" class="text-3xl md:text-4xl font-heading font-bold gradient-text">0</p>
+          <p class="mt-2 text-sm md:text-base font-medium text-slate-600 dark:text-slate-300">Registered Learners</p>
+        </div>
+        <div
+          class="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-lg">
+          <p id="statActiveCourses" class="text-3xl md:text-4xl font-heading font-bold gradient-text">0</p>
+          <p class="mt-2 text-sm md:text-base font-medium text-slate-600 dark:text-slate-300">Active Courses</p>
+        </div>
+        <div
+          class="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-lg">
+          <p id="statEnrollments" class="text-3xl md:text-4xl font-heading font-bold gradient-text">0</p>
+          <p class="mt-2 text-sm md:text-base font-medium text-slate-600 dark:text-slate-300">Course Enrollments</p>
+        </div>
+        <div
+          class="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-lg">
+          <p id="statVisits" class="text-3xl md:text-4xl font-heading font-bold gradient-text">0</p>
+          <p class="mt-2 text-sm md:text-base font-medium text-slate-600 dark:text-slate-300">Visits (24h)</p>
+        </div>
       </div>
     </div>
   </section>
@@ -370,25 +589,36 @@
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
         <div>
           <p class="text-sm text-primary font-bold tracking-widest uppercase mb-2">From the Academy</p>
-          <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white">Latest Updates <span class="gradient-text">&amp; News</span></h2>
+          <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white">Latest Updates <span
+              class="gradient-text">&amp; News</span></h2>
         </div>
-        <p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2"><i class="fas fa-arrows-left-right text-primary"></i> Scroll to explore</p>
+        <p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2"><i
+            class="fas fa-arrows-left-right text-primary"></i> Scroll to explore</p>
       </div>
-      <div id="newsTicker" class="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4 scroll-smooth" aria-label="Latest academy announcements">
-        <article class="min-w-[280px] sm:min-w-[340px] snap-start bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-indigo-200 dark:border-indigo-400/20 p-6 rounded-2xl shadow-lg">
-          <p class="text-xs font-bold tracking-widest uppercase text-indigo-600 dark:text-indigo-400 mb-3">New Program</p>
+      <div id="newsTicker" class="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4 scroll-smooth"
+        aria-label="Latest academy announcements">
+        <article
+          class="min-w-[280px] sm:min-w-[340px] snap-start bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-indigo-200 dark:border-indigo-400/20 p-6 rounded-2xl shadow-lg">
+          <p class="text-xs font-bold tracking-widest uppercase text-indigo-600 dark:text-indigo-400 mb-3">New Program
+          </p>
           <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">AI-Powered Research &amp; Vibe Coding</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400">Explore ethical AI for academic research, data analytics, prompt engineering, and building useful tools.</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Explore ethical AI for academic research, data
+            analytics, prompt engineering, and building useful tools.</p>
         </article>
-        <article class="min-w-[280px] sm:min-w-[340px] snap-start bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-sky-200 dark:border-sky-400/20 p-6 rounded-2xl shadow-lg">
+        <article
+          class="min-w-[280px] sm:min-w-[340px] snap-start bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-sky-200 dark:border-sky-400/20 p-6 rounded-2xl shadow-lg">
           <p class="text-xs font-bold tracking-widest uppercase text-sky-600 dark:text-sky-400 mb-3">Learning</p>
           <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">Build Skills for Modern Research</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400">Discover practical workshops connecting biological sciences, programming, and data analysis.</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Discover practical workshops connecting biological
+            sciences, programming, and data analysis.</p>
         </article>
-        <article class="min-w-[280px] sm:min-w-[340px] snap-start bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-emerald-200 dark:border-emerald-400/20 p-6 rounded-2xl shadow-lg">
-          <p class="text-xs font-bold tracking-widest uppercase text-emerald-600 dark:text-emerald-400 mb-3">Research</p>
+        <article
+          class="min-w-[280px] sm:min-w-[340px] snap-start bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-emerald-200 dark:border-emerald-400/20 p-6 rounded-2xl shadow-lg">
+          <p class="text-xs font-bold tracking-widest uppercase text-emerald-600 dark:text-emerald-400 mb-3">Research
+          </p>
           <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">Biology Meets Technology</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400">Follow the academy’s focus on evidence-led research and interdisciplinary learning.</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Follow the academy’s focus on evidence-led research and
+            interdisciplinary learning.</p>
         </article>
       </div>
     </div>
@@ -441,13 +671,19 @@
             tailored for scientific research and data analysis.</p>
         </div>
 
+        <!-- Individual courses are never rendered here; they live in LOCAL_COURSE_CATALOG (JS)
+             and are shown only inside their parent category's course modal. -->
+
         <!-- AI Research & Vibe Coding -->
-        <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-indigo-300 dark:border-indigo-400/30 p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group shadow-lg">
-          <div class="w-14 h-14 bg-indigo-100 dark:bg-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+        <div
+          class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-indigo-300 dark:border-indigo-400/30 p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group shadow-lg">
+          <div
+            class="w-14 h-14 bg-indigo-100 dark:bg-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
             <i class="fas fa-brain"></i>
           </div>
           <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-3">AI-Powered Research &amp; Vibe Coding</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm">Master ethical AI integration for academic research, data analytics, prompt engineering, and Vibe Coding to build tech tools without traditional programming.</p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">Master ethical AI integration for academic research,
+            data analytics, prompt engineering, and Vibe Coding to build tech tools without traditional programming.</p>
         </div>
         <!-- Card 4 -->
         <div
@@ -474,12 +710,15 @@
         </div>
 
         <!-- Training & Workshops -->
-        <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-cyan-300 dark:border-cyan-400/20 p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group shadow-lg">
-          <div class="w-14 h-14 bg-cyan-100 dark:bg-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-600 dark:text-cyan-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+        <div
+          class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-cyan-300 dark:border-cyan-400/20 p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group shadow-lg">
+          <div
+            class="w-14 h-14 bg-cyan-100 dark:bg-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-600 dark:text-cyan-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
             <i class="fas fa-chalkboard-teacher"></i>
           </div>
           <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-3">Training &amp; Workshops</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm">Join practical workshops that turn research ideas into confident, hands-on skills.</p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">Join practical workshops that turn research ideas into
+            confident, hands-on skills.</p>
         </div>
 
         <!-- Card 6 -->
@@ -528,7 +767,8 @@
               </div>
               <div>
                 <p class="text-sm text-slate-500">Email</p>
-                <a href="mailto:mdnafizurrahman8024@gmail.com" class="font-semibold hover:text-primary transition-colors">mdnafizurrahman8024@gmail.com</a>
+                <a href="mailto:mdnafizurrahman8024@gmail.com"
+                  class="font-semibold hover:text-primary transition-colors">mdnafizurrahman8024@gmail.com</a>
               </div>
             </div>
           </div>
@@ -666,12 +906,14 @@
     </div>
   </section>
 
-  <footer id="siteFooter" class="relative z-10 py-8 bg-white dark:bg-dark-900 border-t border-slate-200 dark:border-slate-800">
+  <footer id="siteFooter"
+    class="relative z-10 py-8 bg-white dark:bg-dark-900 border-t border-slate-200 dark:border-slate-800">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mt-20 pt-8 border-t border-slate-200 dark:border-slate-800 text-slate-500 text-sm">
         <p>&copy; 2026 Zun Synthesis Academy. All rights reserved.</p>
         <p class="mt-1">Developed for Md. Nafizur Rahman</p>
-        <button type="button" onclick="togglePrivacyModal()" class="mt-3 text-primary hover:underline">Privacy &amp; Security Policy</button>
+        <button type="button" onclick="togglePrivacyModal()" class="mt-3 text-primary hover:underline">Privacy &amp;
+          Security Policy</button>
       </div>
     </div>
   </footer>
@@ -768,6 +1010,227 @@
 
     // The page remains usable as a static site if the API is unavailable.
     // When the API is online, database content replaces the matching sections.
+    // ---------------------------------------------------------------------
+    // DEMO MODE (front-end only, no backend required)
+    // Hardcoded Python course, guest dashboard and sample records.
+    // All demo records carry id values starting with "demo-".
+    // ---------------------------------------------------------------------
+    const DEMO_COURSE = {
+      id: 'demo-python-21-days',
+      category: 'Programming & Tech',
+      program_slug: 'programming-tech',
+      title: '21 Days Python Programming Practice',
+      status: 'upcoming',
+      instructor: 'Md. Nafizur Rahman · ZSA Programming & Tech Lab',
+      schedule: 'Starts 5 November 2026 · 60 minutes daily for 21 days',
+      price_cents: 1900,
+      regular_price_cents: 4900,
+      currency: 'USD',
+      has_offer: true,
+      discount_badge_text: '61% launch discount',
+      image_url: 'demo.png',
+      image_alt: '21 Days Python Programming Practice course thumbnail',
+      description: '<p>Twenty-one focused days of hands-on Python practice designed for research students and beginners. Each day pairs a short concept walkthrough with a coding exercise, so you build muscle memory instead of only reading theory.</p><p>You will finish with a small research dataset project: cleaning, exploring and visualising real numbers in Python.</p>',
+      syllabus: [
+        'Day 1 – Python setup, Jupyter notebooks and your first script',
+        'Day 2 – Variables, data types and type conversion',
+        'Day 3 – Strings, formatting and input handling',
+        'Day 4 – Lists and tuples: building data collections',
+        'Day 5 – Dictionaries and sets for fast lookups',
+        'Day 6 – Week 1 recap: 10 mini practice problems',
+        'Day 7 – if / elif / else and truth value testing',
+        'Day 8 – for and while loops with counters',
+        'Day 9 – Writing reusable functions and docstrings',
+        'Day 10 – Modules, packages and virtual environments',
+        'Day 11 – File handling: reading and writing CSV data',
+        'Day 12 – Error handling with try / except',
+        'Day 13 – Week 2 recap: a command-line data cleaner',
+        'Day 14 – Intro to pandas: Series and DataFrames',
+        'Day 15 – Filtering, sorting and grouping tabular data',
+        'Day 16 – Missing values and basic data cleaning',
+        'Day 17 – Charts with Matplotlib',
+        'Day 18 – A small statistics workflow end to end',
+        'Day 19 – Structuring a project with notebooks and scripts',
+        'Day 20 – Capstone: analyse a laboratory dataset',
+        'Day 21 – Present your results and next learning steps'
+      ]
+    };
+
+    // Front-end course catalog. Every course MUST declare its parent category
+    // (title + slug); it is only ever displayed inside that category's page.
+    const LOCAL_COURSE_CATALOG = [DEMO_COURSE];
+
+    function coursesForCategory(slug, title) {
+      return LOCAL_COURSE_CATALOG.filter(course =>
+        course.program_slug === slug || course.category === title);
+    }
+
+    const DEMO_SYLLABUS_PLAN = [
+      { week: 'Week 1', range: 'Days 1–6', title: 'Python Foundations', icon: 'fa-code', accent: 'text-sky-600 dark:text-sky-400 bg-sky-100 dark:bg-sky-500/20', days: DEMO_COURSE.syllabus.slice(0, 6) },
+      { week: 'Week 2', range: 'Days 7–13', title: 'Logic, Functions & Files', icon: 'fa-arrows-spin', accent: 'text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/20', days: DEMO_COURSE.syllabus.slice(6, 13) },
+      { week: 'Week 3', range: 'Days 14–21', title: 'Data Practice & Capstone', icon: 'fa-chart-line', accent: 'text-indigo-600 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-500/20', days: DEMO_COURSE.syllabus.slice(13) }
+    ];
+
+    const DEMO_STUDENT = {
+      full_name: 'Demo Learner',
+      email: 'guest.demo@zunsynthesis.academy'
+    };
+
+    function demoDashboardData() {
+      return {
+        student: { ...DEMO_STUDENT },
+        courses: [{
+          id: 'demo-enrollment-python-21-days',
+          completed: false,
+          progress_percent: 45,
+          enrolled_at: '2026-10-02T09:15:00Z',
+          course: {
+            id: DEMO_COURSE.id,
+            title: DEMO_COURSE.title,
+            schedule: '21 days · Day 10 of 21 completed',
+            image_url: DEMO_COURSE.image_url
+          }
+        }],
+        payments: [{
+          id: 'demo-invoice-2026-1042',
+          course_title: DEMO_COURSE.title,
+          invoice_number: 'ZSA-2026-1042',
+          created_at: '2026-10-02T09:15:00Z',
+          currency: 'USD',
+          amount_cents: 1900,
+          status: 'paid',
+          payment_method: 'Demo card •••• 4242'
+        }],
+        certificates: [],
+        financial_aid: [{
+          id: 'demo-aid-2026-017',
+          course_title: DEMO_COURSE.title,
+          status: 'pending',
+          requested_amount_cents: 900,
+          review_note: '',
+          submitted_at: '2026-10-18T11:40:00Z'
+        }],
+        profile: {
+          program_interest: 'Programming & Tech — Python for research',
+          timezone: 'Asia/Dhaka (GMT+6)',
+          bio: 'Demo profile. This sample record is stored in your browser only and is never sent to a server.'
+        }
+      };
+    }
+
+    function isDemoMode() {
+      return sessionStorage.getItem('zsa-demo-mode') === '1';
+    }
+
+    function startDemoMode() {
+      sessionStorage.setItem('zsa-demo-mode', '1');
+      sessionStorage.setItem('zsa-student-token', 'demo-guest-session');
+      sessionStorage.setItem('zsa-student-name', DEMO_STUDENT.full_name);
+      sessionStorage.setItem('zsa-student-email', DEMO_STUDENT.email);
+      if (!document.getElementById('joinModal').classList.contains('hidden')) toggleJoinModal();
+      updateStudentNavigation();
+      openStudentDashboard();
+    }
+
+    function exitDemoMode() {
+      sessionStorage.removeItem('zsa-demo-mode');
+      sessionStorage.removeItem('zsa-student-token');
+      sessionStorage.removeItem('zsa-student-name');
+      sessionStorage.removeItem('zsa-student-email');
+      updateStudentNavigation();
+      closeStudentDashboard();
+    }
+
+    function openDemoCourse(programSlug = 'programming-tech') {
+      openProgramCourses(programSlug, 'Programming & Tech', 'Learn Python, SQL, and core programming concepts tailored for scientific research and data analysis.');
+    }
+
+
+
+    function renderDemoSyllabus() {
+      const container = document.getElementById('demoSyllabusWeeks');
+      container.replaceChildren();
+      DEMO_SYLLABUS_PLAN.forEach(week => {
+        const card = document.createElement('article');
+        card.className = 'p-5 rounded-2xl bg-white dark:bg-slate-800/80 border-slate-200 dark:border-white/10 shadow-lg';
+        const header = document.createElement('div');
+        header.className = 'flex items-center gap-3 mb-4';
+        const badge = document.createElement('div');
+        badge.className = 'w-10 h-10 rounded-xl flex items-center justify-center ' + week.accent;
+        const icon = document.createElement('i'); icon.className = 'fas ' + week.icon;
+        badge.appendChild(icon);
+        const titles = document.createElement('div');
+        const overline = document.createElement('p'); overline.className = 'text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400'; overline.textContent = week.week + ' · ' + week.range;
+        const title = document.createElement('h5'); title.className = 'font-bold text-slate-800 dark:text-white'; title.textContent = week.title;
+        titles.append(overline, title);
+        header.append(badge, titles);
+        const list = document.createElement('ol');
+        list.className = 'space-y-2.5 text-sm text-slate-600 dark:text-slate-400';
+        week.days.forEach(day => {
+          const item = document.createElement('li');
+          item.className = 'flex gap-2';
+          const check = document.createElement('i'); check.className = 'fas fa-circle-check text-secondary mt-1 text-xs shrink-0';
+          const text = document.createElement('span'); text.textContent = day;
+          item.append(check, text);
+          list.appendChild(item);
+        });
+        card.append(header, list);
+        container.appendChild(card);
+      });
+    }
+
+    function toggleDemoSyllabus() {
+      document.getElementById('demoSyllabusPanel').classList.toggle('hidden');
+    }
+
+    function createDemoCourseCard(course) {
+      const card = document.createElement('article');
+      card.className = 'text-left bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border-slate-200 dark:border-white/10 rounded-2xl shadow-lg overflow-hidden hover:-translate-y-1 hover:border-primary/40 transition-all cursor-pointer';
+      card.dataset.demoCourse = course.program_slug;
+      card.setAttribute('role', 'button');
+      card.tabIndex = 0;
+      const image = document.createElement('img');
+      image.src = course.image_url;
+      image.alt = course.image_alt || course.title;
+      image.loading = 'lazy';
+      image.className = 'w-full h-44 object-cover';
+      const body = document.createElement('div');
+      body.className = 'p-6';
+      const status = document.createElement('span');
+      status.className = 'inline-flex px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4';
+      status.textContent = 'Demo · ' + course.status;
+      const offerBadge = document.createElement('span');
+      offerBadge.className = 'inline-flex px-3 py-1 rounded-full bg-rose-100 dark:bg-rose-500/10 text-rose-700 dark:text-rose-300 text-xs font-bold mb-4 ml-2';
+      offerBadge.textContent = course.discount_badge_text;
+      const heading = document.createElement('h3');
+      heading.className = 'text-xl font-bold text-slate-800 dark:text-white mb-2';
+      heading.textContent = course.title;
+      const description = document.createElement('p');
+      description.className = 'text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mb-5';
+      description.textContent = 'Twenty-one focused days of hands-on Python practice, from foundations to a small research-data capstone.';
+      const fee = document.createElement('p');
+      fee.className = 'font-semibold text-primary';
+      fee.textContent = course.currency + ' ' + (course.price_cents / 100).toFixed(2);
+      const regular = document.createElement('del');
+      regular.className = 'ml-2 text-sm text-slate-400 font-normal';
+      regular.textContent = course.currency + ' ' + (course.regular_price_cents / 100).toFixed(2);
+      fee.appendChild(regular);
+      const action = document.createElement('button');
+      action.type = 'button';
+      action.className = 'mt-5 px-4 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all';
+      action.textContent = 'View details & syllabus';
+      action.addEventListener('click', event => { event.stopPropagation(); showCourseDetails(course); });
+      body.append(status, offerBadge, heading, description, fee, action);
+      card.append(image, body);
+      card.addEventListener('click', () => showCourseDetails(course));
+      return card;
+    }
+
+    window.startDemoMode = startDemoMode;
+    window.exitDemoMode = exitDemoMode;
+    window.openDemoCourse = openDemoCourse;
+    window.toggleDemoSyllabus = toggleDemoSyllabus;
+
     const accentStyles = {
       blue: ['border-slate-200 dark:border-white/10', 'bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400'],
       emerald: ['border-slate-200 dark:border-white/10', 'bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400'],
@@ -949,26 +1412,39 @@
       document.body.classList.toggle('overflow-hidden', show);
     }
 
-    async function openProgramCourses(slug, title, description = '') {
+    function openProgramCourses(slug, title, description = '') {
       currentProgram = { slug, title, description };
       programCourses = [];
       selectedCourse = null;
       selectedCourseTab = 'upcoming';
+      const demoOnly = isDemoMode() && slug === DEMO_COURSE.program_slug;
       document.getElementById('courseModalTitle').textContent = title;
       document.getElementById('courseModalDescription').textContent = description;
       document.getElementById('courseDetailPanel').classList.add('hidden');
       document.getElementById('courseList').classList.remove('hidden');
       document.getElementById('courseActionMessage').classList.add('hidden');
+      document.getElementById('demoSyllabusPanel').classList.add('hidden');
       document.getElementById('courseList').innerHTML = '<p class="text-slate-500 dark:text-slate-400">Loading available courses…</p>';
       courseModalVisibility(true);
-      try {
-        const response = await fetch(`/api/courses?program_slug=${encodeURIComponent(slug)}`);
-        if (!response.ok) throw new Error('Course listings could not be loaded.');
-        programCourses = await response.json();
-      } catch (_) {
-        programCourses = [];
-      }
+      // Local catalog courses are added ONLY to their own parent category.
+      // Unauthenticated visitors see the demo course as the interactive example.
+      const localCourses = () => (!demoOnly && !sessionStorage.getItem('zsa-student-token'))
+        ? coursesForCategory(slug, title)
+        : [];
+      programCourses = localCourses();
+      // Paint the local listing immediately so it works offline; API results then replace it.
       renderCourseList();
+      return fetch(`/api/courses?program_slug=${encodeURIComponent(slug)}`)
+        .then(async response => {
+          if (!response.ok) throw new Error('Course listings could not be loaded.');
+          const listed = await response.json();
+          if (!Array.isArray(listed) || !listed.length) return;
+          // Defensive: drop any API course explicitly mapped to another category.
+          const matching = listed.filter(course => !course.program_slug || course.program_slug === slug);
+          programCourses = [...matching, ...localCourses()];
+          if (currentProgram.slug === slug) renderCourseList();
+        })
+        .catch(() => { });
     }
 
     function renderCourseList() {
@@ -985,11 +1461,14 @@
       if (!courses.length) {
         const empty = document.createElement('div');
         empty.className = 'col-span-full bg-white/70 dark:bg-slate-800/60 border border-slate-200 dark:border-white/10 rounded-2xl p-8 text-center text-slate-500 dark:text-slate-400';
-        empty.textContent = 'There are no courses in this category right now.';
+        empty.textContent = isDemoMode() && currentProgram.slug === DEMO_COURSE.program_slug
+          ? 'You are already enrolled in the demo course. Open it from My Dashboard.'
+          : 'There are no courses in this category right now.';
         list.appendChild(empty);
         return;
       }
       courses.forEach(course => {
+        if (course.id === DEMO_COURSE.id) { list.appendChild(createDemoCourseCard(course)); return; }
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'text-left bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-white/10 p-6 rounded-2xl shadow-lg hover:-translate-y-1 hover:border-primary/40 transition-all';
@@ -1027,10 +1506,13 @@
     function showCourseDetails(course) {
       selectedCourse = course;
       pendingPaymentId = null;
+      const demoCourse = course.id === DEMO_COURSE.id;
       document.getElementById('courseList').classList.add('hidden');
       const panel = document.getElementById('courseDetailPanel');
+      // 'hidden' sits after other classes in the template, so remove it by name (not by index).
       panel.classList.remove('hidden');
-      document.getElementById('courseDetailStatus').textContent = course.status;
+      panel.classList.add('block');
+      document.getElementById('courseDetailStatus').textContent = demoCourse ? 'Demo · ' + course.status : course.status;
       document.getElementById('courseDetailTitle').textContent = course.title;
       document.getElementById('courseDetailDescription').innerHTML = course.description || '';
       document.getElementById('courseDetailInstructor').textContent = course.instructor || 'Instructor details will be announced.';
@@ -1053,6 +1535,9 @@
       document.getElementById('courseEnrollButton').disabled = false;
       document.getElementById('courseEnrollButton').classList.toggle('hidden', course.status === 'closed');
       document.getElementById('courseAidToggle').classList.toggle('hidden', course.status === 'closed' || course.price_cents <= 0);
+      document.getElementById('demoSyllabusToggle').classList.toggle('hidden', !demoCourse);
+      document.getElementById('demoSyllabusPanel').classList.toggle('hidden', !demoCourse);
+      if (demoCourse) renderDemoSyllabus();
       document.getElementById('mockPaymentPanel').classList.add('hidden');
       document.getElementById('financialAidForm').classList.add('hidden');
       document.getElementById('courseActionMessage').classList.add('hidden');
@@ -1120,6 +1605,7 @@
     }
 
     function closeCourseModal() {
+      document.getElementById('demoSyllabusPanel').classList.add('hidden');
       courseModalVisibility(false);
     }
     window.closeCourseModal = closeCourseModal;
@@ -1167,6 +1653,17 @@
     });
     document.getElementById('courseBackButton').addEventListener('click', renderCourseList);
     document.getElementById('courseEnrollButton').addEventListener('click', () => {
+      if (selectedCourse?.id === DEMO_COURSE.id) {
+        if (!sessionStorage.getItem('zsa-student-token')) {
+          showCourseMessage('Preview mode: log in as a guest demo learner to enrol, or create an account.', true);
+          toggleJoinModal();
+          return;
+        }
+        showCourseMessage('You are already enrolled in this demo course — opening My Dashboard.');
+        closeCourseModal();
+        openStudentDashboard();
+        return;
+      }
       if (selectedCourse?.price_cents > 0) {
         if (!sessionStorage.getItem('zsa-student-token')) {
           showCourseMessage('Create a learner account or log in to enroll.', true);
@@ -1219,6 +1716,7 @@
 
     let studentAuthMode = 'register';
     document.getElementById('studentAuthModeToggle').addEventListener('click', () => {
+      sessionStorage.removeItem('zsa-demo-mode');
       studentAuthMode = studentAuthMode === 'register' ? 'login' : 'register';
       const registering = studentAuthMode === 'register';
       document.getElementById('studentNameField').classList.toggle('hidden', !registering);
@@ -1247,6 +1745,7 @@
         });
         const result = await response.json();
         if (!response.ok) throw new Error(result.detail || 'Account request failed.');
+        sessionStorage.removeItem('zsa-demo-mode');
         sessionStorage.setItem('zsa-student-token', result.access_token);
         sessionStorage.setItem('zsa-student-name', result.student?.full_name || document.getElementById('studentFullName').value);
         sessionStorage.setItem('zsa-student-email', result.student?.email || payload.email);
@@ -1267,6 +1766,9 @@
       const dashboardButton = document.getElementById('studentDashboardNav');
       dashboardButton.classList.toggle('hidden', !signedIn);
       dashboardButton.classList.toggle('flex', signedIn);
+      const demoMode = isDemoMode();
+      dashboardButton.classList.toggle('border-primary/40', demoMode);
+      dashboardButton.title = demoMode ? 'Demo mode — sample data only' : 'Open my dashboard';
       const name = sessionStorage.getItem('zsa-student-name') || 'Learner';
       const initials = name.trim().split(/\s+/).slice(0, 2).map(part => part[0]?.toUpperCase() || '').join('') || 'ZS';
       document.getElementById('studentAvatar').textContent = initials;
@@ -1278,6 +1780,17 @@
       const token = sessionStorage.getItem('zsa-student-token');
       const error = document.getElementById('dashboardError');
       error.classList.add('hidden');
+      if (isDemoMode()) {
+        studentDashboardData = demoDashboardData();
+        updateStudentNavigation();
+        const avatar = document.getElementById('dashboardAvatar');
+        avatar.className = 'w-11 h-11 shrink-0 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 flex items-center justify-center font-bold ring-2 ring-amber-400/40';
+        avatar.textContent = 'DL';
+        document.getElementById('dashboardWelcome').textContent = 'Welcome, ' + DEMO_STUDENT.full_name;
+        document.getElementById('dashboardEmail').textContent = DEMO_STUDENT.email;
+        renderStudentDashboardTab(activeDashboardTab);
+        return;
+      }
       try {
         const response = await fetch('/api/students/me/dashboard', { headers: { 'Authorization': `Bearer ${token}` } });
         const result = await response.json();
@@ -1340,6 +1853,32 @@
             const track = document.createElement('div'); track.className = 'h-2.5 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden';
             const fill = document.createElement('div'); fill.className = `h-full rounded-full ${completed ? 'bg-emerald-500' : 'bg-gradient-to-r from-primary to-secondary'}`; fill.style.width = `${Math.max(0, Math.min(100, item.progress_percent))}%`; track.appendChild(fill);
             card.append(heading, meta, progressLabel, track);
+
+            if (item.course.id === DEMO_COURSE.id) {
+              const thumb = document.createElement('img');
+              thumb.src = DEMO_COURSE.image_url;
+              thumb.alt = DEMO_COURSE.image_alt;
+              thumb.className = 'w-full h-36 object-cover rounded-xl mb-4';
+              card.prepend(thumb);
+              const continueRow = document.createElement('div');
+              continueRow.className = 'flex flex-wrap items-center justify-between gap-3 mt-5';
+              const nextDay = document.createElement('p');
+              nextDay.className = 'text-xs font-semibold text-slate-600 dark:text-slate-300';
+              nextDay.innerHTML = '<i class="fas fa-play-circle text-primary mr-1"></i> Next up · Day 10: Modules &amp; virtual environments';
+              const continueButton = document.createElement('button');
+              continueButton.type = 'button';
+              continueButton.className = 'px-4 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all';
+              continueButton.textContent = 'Continue learning';
+              continueButton.addEventListener('click', () => {
+                closeStudentDashboard();
+                openProgramCourses(DEMO_COURSE.program_slug, 'Programming & Tech', 'Learn Python, SQL, and core programming concepts tailored for scientific research and data analysis.')
+                  .then(() => showCourseDetails(DEMO_COURSE));
+              });
+              continueRow.append(nextDay, continueButton);
+              card.append(heading, meta, progressLabel, track, continueRow);
+              courseGrid.appendChild(card);
+              return;
+            }
             courseGrid.appendChild(card);
           });
         };
@@ -1360,6 +1899,18 @@
           const invoice = document.createElement('p'); invoice.className = 'text-sm text-slate-500 mt-1'; invoice.textContent = `Invoice ${payment.invoice_number} · ${new Date(payment.created_at).toLocaleDateString()}`;
           const details = document.createElement('p'); details.className = 'mt-4 font-semibold'; details.textContent = `${payment.currency} ${(payment.amount_cents / 100).toFixed(2)} · ${payment.status.toUpperCase()}`;
           const actions = document.createElement('div'); actions.className = 'flex flex-wrap gap-3 mt-4';
+          if (payment.id.startsWith('demo-')) {
+            const paidBadge = document.createElement('span');
+            paidBadge.className = 'inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-3';
+            paidBadge.innerHTML = '<i class="fas fa-circle-check"></i> Paid';
+            const method = document.createElement('p'); method.className = 'text-sm text-slate-500 dark:text-slate-400 mt-2'; method.textContent = payment.payment_method + ' · Demo invoice, no real charge';
+            const invoiceButton = document.createElement('button'); invoiceButton.className = 'text-primary font-semibold hover:underline'; invoiceButton.textContent = 'View invoice';
+            invoiceButton.addEventListener('click', () => { invoiceButton.textContent = 'Sample invoice · demo only'; invoiceButton.disabled = true; invoiceButton.classList.add('opacity-60', 'cursor-default'); });
+            actions.appendChild(invoiceButton);
+            card.append(paidBadge, heading, invoice, details, method, actions); panel.appendChild(card);
+            return;
+          }
+
           const invoiceButton = document.createElement('button'); invoiceButton.className = 'text-primary font-semibold hover:underline'; invoiceButton.textContent = 'Download invoice'; invoiceButton.addEventListener('click', () => downloadStudentFile(`/api/students/me/payments/${payment.id}/invoice`, `${payment.invoice_number}.html`));
           actions.appendChild(invoiceButton);
           if (payment.status === 'pending') {
@@ -1375,6 +1926,25 @@
         });
       } else if (tab === 'certificates') {
         const certificates = studentDashboardData.certificates || [];
+        if (isDemoMode()) {
+          const card = dashboardCard();
+          const badge = document.createElement('span');
+          badge.className = 'inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300 text-xs font-bold uppercase tracking-wider mb-4';
+          badge.innerHTML = '<i class="fas fa-lock"></i> Locked';
+          const heading = document.createElement('h3'); heading.className = 'text-lg font-bold text-slate-900 dark:text-white'; heading.textContent = DEMO_COURSE.title;
+          const copy = document.createElement('p'); copy.className = 'text-sm text-slate-500 dark:text-slate-400 mt-2'; copy.textContent = 'Complete all 21 days and the capstone review to unlock this certificate.';
+          const progressLabel = document.createElement('div'); progressLabel.className = 'flex justify-between text-xs font-semibold mt-6 mb-2';
+          const progressText = document.createElement('span'); progressText.textContent = 'Completion';
+          const progressValue = document.createElement('span'); progressValue.className = 'text-primary'; progressValue.textContent = '45%';
+          progressLabel.append(progressText, progressValue);
+          const track = document.createElement('div'); track.className = 'h-2.5 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden';
+          const fill = document.createElement('div'); fill.className = 'h-full rounded-full bg-gradient-to-r from-primary to-secondary'; fill.style.width = '45%'; track.appendChild(fill);
+          const locked = document.createElement('button'); locked.type = 'button'; locked.disabled = true;
+          locked.className = 'mt-5 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-400 font-semibold cursor-not-allowed';
+          locked.innerHTML = '<i class="fas fa-lock mr-2"></i>Certificate locked';
+          card.append(badge, heading, copy, progressLabel, track, locked); panel.appendChild(card);
+          return;
+        }
         if (!certificates.length) { panel.appendChild(dashboardEmpty('Certificates are issued automatically after an admin marks a course complete.')); return; }
         certificates.forEach(certificate => {
           const card = dashboardCard();
@@ -1392,9 +1962,11 @@
         requests.forEach(request => {
           const card = dashboardCard();
           const heading = document.createElement('h3'); heading.className = 'text-lg font-bold text-slate-900 dark:text-white'; heading.textContent = request.course_title;
-          const status = document.createElement('p'); status.className = 'mt-3 inline-flex px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase'; status.textContent = request.status;
+          const isDemoAid = request.id.startsWith('demo-');
+          const status = document.createElement('p'); status.className = isDemoAid ? 'mt-3 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300 text-xs font-bold uppercase' : 'mt-3 inline-flex px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase'; status.textContent = request.status;
           const amount = document.createElement('p'); amount.className = 'text-sm mt-3'; amount.textContent = `Requested discount: ${(request.requested_amount_cents / 100).toFixed(2)}`;
-          const note = document.createElement('p'); note.className = 'text-sm text-slate-500 dark:text-slate-400 mt-2'; note.textContent = request.review_note ? `Review note: ${request.review_note}` : 'No review note yet.';
+          const note = document.createElement('p'); note.className = 'text-sm text-slate-500 dark:text-slate-400 mt-2';
+          note.textContent = request.review_note ? `Review note: ${request.review_note}` : (isDemoAid ? 'Status: Pending review · Submitted 18 October 2026 · Typical review time 3–5 working days.' : 'No review note yet.');
           card.append(heading, status, amount, note); panel.appendChild(card);
         });
       } else if (tab === 'profile') {
@@ -1410,7 +1982,23 @@
         fields.forEach(([name, label, value, type]) => { const wrap = document.createElement('div'); const caption = document.createElement('label'); caption.className = 'block text-sm mb-1'; caption.textContent = label; const input = document.createElement('input'); input.name = name; input.type = type; input.value = value; input.className = 'w-full rounded-xl px-4 py-3 bg-slate-50 dark:bg-dark-900 border border-slate-200 dark:border-white/10'; wrap.append(caption, input); form.appendChild(wrap); });
         const bioWrap = document.createElement('div'); const bioLabel = document.createElement('label'); bioLabel.className = 'block text-sm mb-1'; bioLabel.textContent = 'About you'; const bio = document.createElement('textarea'); bio.name = 'bio'; bio.rows = 4; bio.maxLength = 2000; bio.value = profile.bio || ''; bio.className = 'w-full rounded-xl px-4 py-3 bg-slate-50 dark:bg-dark-900 border border-slate-200 dark:border-white/10'; bioWrap.append(bioLabel, bio); form.appendChild(bioWrap);
         const save = document.createElement('button'); save.type = 'submit'; save.className = 'px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-bold'; save.textContent = 'Save profile'; form.appendChild(save);
-        form.addEventListener('submit', async event => { event.preventDefault(); const values = Object.fromEntries(new FormData(form).entries()); const response = await fetch('/api/students/me/profile', { method: 'PATCH', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${sessionStorage.getItem('zsa-student-token')}` }, body: JSON.stringify(values) }); if (response.ok) { studentDashboardData.profile = await response.json(); save.textContent = 'Saved'; } });
+        form.addEventListener('submit', async event => {
+          event.preventDefault();
+          const values = Object.fromEntries(new FormData(form).entries());
+          if (isDemoMode()) { studentDashboardData.profile = { ...studentDashboardData.profile, ...values }; save.textContent = 'Saved (demo)'; return; }
+          const response = await fetch('/api/students/me/profile', { method: 'PATCH', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${sessionStorage.getItem('zsa-student-token')}` }, body: JSON.stringify(values) }); if (response.ok) { studentDashboardData.profile = await response.json(); save.textContent = 'Saved'; }
+        });
+        if (isDemoMode()) {
+          const demoNotice = document.createElement('div');
+          demoNotice.className = 'p-4 rounded-xl bg-primary/10 border-primary/20 text-sm text-slate-600 dark:text-slate-300';
+          demoNotice.innerHTML = '<i class="fas fa-flask text-primary mr-2"></i><strong>Demo mode</strong> — this dashboard uses sample records stored only in your browser.';
+          card.prepend(demoNotice);
+          const exit = document.createElement('button'); exit.type = 'button'; exit.className = 'block mt-6 text-red-500 font-semibold hover:underline'; exit.textContent = 'Exit demo mode';
+          exit.addEventListener('click', exitDemoMode);
+          card.append(form, exit); panel.appendChild(card);
+          return;
+        }
+
         const logout = document.createElement('button'); logout.type = 'button'; logout.className = 'block mt-6 text-red-500 font-semibold hover:underline'; logout.textContent = 'Log out of this device'; logout.addEventListener('click', () => { sessionStorage.removeItem('zsa-student-token'); sessionStorage.removeItem('zsa-student-name'); sessionStorage.removeItem('zsa-student-email'); updateStudentNavigation(); closeStudentDashboard(); });
         card.append(form, logout); panel.appendChild(card);
       }
@@ -1433,18 +2021,25 @@
     function closeStudentDashboard() {
       document.getElementById('studentDashboard').classList.add('hidden');
       document.body.classList.remove('overflow-hidden');
+      if (!sessionStorage.getItem('zsa-student-token')) {
+        document.getElementById('dashboardAvatar').className = 'w-11 h-11 shrink-0 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold';
+      }
     }
+
     window.openStudentDashboard = openStudentDashboard;
     window.closeStudentDashboard = closeStudentDashboard;
     document.querySelectorAll('[data-dashboard-tab]').forEach(button => button.addEventListener('click', () => renderStudentDashboardTab(button.dataset.dashboardTab)));
     updateStudentNavigation();
+
+    // Deep link for previewing the demo UI: index.html#demo (or #demo-dashboard).
+    if (!isDemoMode() && ['#demo', '#demo-dashboard'].includes(window.location.hash)) startDemoMode();
 
     fetch('/api/analytics/track', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ page_path: window.location.pathname }),
       keepalive: true
-    }).catch(() => {}).finally(refreshLiveStats);
+    }).catch(() => { }).finally(refreshLiveStats);
   </script>
 </body>
 
